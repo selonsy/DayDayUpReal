@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>我的练习</title>
+	<script type="text/javascript">
+	function MyTest(){
+		var listItem=[1,3,4,6,7,9,10];
+		var key=4;
+		//alert(key+'在数组中第'+BinarySerch(key,listItem)+'个位置!');
+
+		var strDouble="aywyert2dd";
+		var strDouble1="wodehka"
+		var strOutput=FindFirstDoubleStr(strDouble1);
+		alert(strOutput);
+
+		//数组测试 
+		//myJsTest();
+	}
+	//二分折半查找
+	function BinarySerch(key,array){
+		var mValue,mNum;
+		var mArray=array;
+		for (var i = 0; i <= array.length/2; i++) {
+			mNum=Math.floor(mArray.length/2) ;
+			mValue=mArray[mNum];
+			if(mValue==key){
+				return i;
+			}
+			else if(mValue>key){
+				mArray=mArray.slice(0,mNum);
+			}
+			else if(mValue<key){
+				mArray=mArray.slice(mNum+1,mArray.length);
+			}
+		};
+		return -1;
+	}
+
+	//找到首先出现两次的字符
+	function FindFirstDoubleStr(str){
+		var strArray=str.split("");
+		var length=strArray.length;
+		for(var i=0;i<length;i++){
+			for(var j=i+1;j<length-i;j++){
+				if(strArray[i]==strArray[j]){
+					return strArray[i];
+				}
+			}
+		}
+		return "没有出现过两次的字符！";
+	}
+
+	//搜索并打印包含"your"的句子，按出现的次数排序
+	function FindIncludeYourAndSort(str){
+		
+	}
+
+	//关于JS数组的测试
+	function myJsTest(){
+		/*数组的创建*/
+		var array = new Array(); 	//创建一个数组
+		var array1=new Array(3); 	//创建一个数组，并且指定长度
+		var array2=new Array(1,3,4,6,7,9,10);  	//创建一个数组，并进行赋初值
+		//alert(array.length+''+array1.length+array2.length); //037
+		//注：不要''的话，即为数字相加，结果为10
+		
+		/*数组元素的访问*/
+		var element1=array2[3]; 	//element1的值为6
+		//alert(element1);
+		array2[3]=5; 	//为array2[3]赋值 
+		//alert(element1);   //值为6
+		//alert(array2[3]);  //值为5
+
+		/*数组元素的添加*/
+		var length1=array.push(1,2,3);
+		//alert(array);  //值为1,2,3
+		//alert(length1); //值为3
+		var length2=array2.unshift(0);
+		//alert(array2);  //值为0,1,3,4,5,7,9,10
+		var newArray2=array2.splice(0,1,100,101,102);  //值为100,101,102,1,3,4,5,7,9,10
+		//splice(start,num[,element1,element2]),删从strat起的元素，删num个，用后面的element元素替换被删除的元素，返回被删除的元素
+		//alert(array2);
+		//alert(array2+'  '+newArray2);
+
+
+		/*数组元素的删除*/
+		var lastStr=array2.pop(); //移除最后一个元素并返回
+		//alert(lastStr); //值为10
+		var firstStr=array2.shift(); //移除第一个元素并返回
+		//alert(firstStr); //值为100
+		//alert(array2); //101,102,1,3,4,5,7,9
+		var deleteStr=array2.splice(0,2);
+		//alert(array2); //1,3,4,5,7,9
+		array2.splice(2,3,6,7,9,10); 
+		//alert(array2); //1,3,6,7,9,10,9 还原啦哈哈哈,屁！！
+		array2.splice(2,5,4,6,7,9,10);
+		//alert(array2); //1,3,4,6,7,9,10 这才是真真的还原了
+
+
+		/*数组元素的截取和合并*/
+		var newArray3=array2.slice(0,2);
+		//alert(newArray3); //值为1,3
+		var newArray4=array2.concat('我是一个小尾巴！');
+		//alert(newArray4[7]); //值为'我是一个小尾巴！'
+
+		/*数组的拷贝*/
+		var newArray5=array2.slice(0); //拷贝一个数组，返回拷贝的新数组
+		//alert(newArray5);
+		var newArray6=array2.concat(); //拷贝一个数组，返回拷贝的新数组
+		//alert(newArray6);
+
+		/*数组元素的排序*/
+		array2.reverse(); //值为10,9,7,6,4,3,1
+		//alert(array2);
+		array2.sort();   //值为1,10,3,4,6,7,9 
+		//alert(array2);
+		//注：按字母顺序(即字符编码的顺序)进行排序，没有按大小进行排序
+		var newArray7=array2.sort(sortNumber); //排序函数
+		//alert(array2); // arrayObject.sort(sortby)
+
+		/*数组元素的字符串化*/
+		var myStr=array2.join('|');
+		//alert(myStr);  //值为 1|3|4|6|7|9|10  字符串
+
+		/*字符串的数组化*/
+		var myNewArray=myStr.split("|");
+		alert(myNewArray);
+	}
+
+	function sortNumber(a,b){
+		return a-b;
+	}
+	</script>
+</head>
+<body>
+	<input type="text" id="txtDisplay" name="txtDisplay" value="0"/>
+	<br/>
+	<input type="button" id="btnClick" name="btnClick" value="点我啊" onclick="MyTest()" />
+</body>
+</html>

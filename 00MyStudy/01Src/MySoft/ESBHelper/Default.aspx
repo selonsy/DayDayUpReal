@@ -42,8 +42,8 @@
                 </div>
                 <button type="submit" class="btn btn-default">提交</button>
             </form>
-        </div>        
-       <%-- 注册登录模块
+        </div>
+        <%-- 注册登录模块
             <div>
             <p class="navbar-text navbar-right">
                 Signed in as 
@@ -79,6 +79,26 @@
         </div>
         <div>
             <table style="text-align: center; margin: 0 auto">
+                <tr style="height: 34px">
+                    <td>
+                        <span class="label label-primary" style="float: left">快捷操作</span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align:left">
+                    <td>
+                        <button type="button" id="" class="btn btn-primary">一键测试</button>
+                        <button type="button" id="" class="btn btn-primary">一键生成</button>                        
+                        <button type="button" id="" class="btn btn-primary">一键下载</button>
+                        <button type="button" id="" class="btn btn-primary">一键装逼</button>
+                    </td>
+                    <td>                        
+                    </td>
+                </tr><%--                
+                <tr style="height: 34px">
+                    <td></td>
+                    <td></td>
+                </tr>--%>
                 <tr style="height: 34px">
                     <td>
                         <span class="label label-primary" style="float: left">ESB站点数据库配置</span>
@@ -210,6 +230,7 @@
                     <td style="float: right">
                         <button type="button" id="btnTestERPDBInfoForTrunk" class="btn btn-primary">数据库连接测试</button>
                         <button type="button" id="btnCreateForTrunk" class="btn btn-primary">生成</button>
+                        <button type="button" id="btnDownLoadForTrunk" class="btn btn-primary" style="display:none">下载</button>
                     </td>
                 </tr>
                 <tr style="height: 34px">
@@ -293,6 +314,7 @@
                     <td style="float: right">
                         <button type="button" id="btnTestERPDBInfoForBranch1" class="btn btn-primary">数据库连接测试</button>
                         <button type="button" id="btnCreateForBranch1" class="btn btn-primary">生成</button>
+                        <button type="button" id="btnDownLoadForBranch1" class="btn btn-primary" style="display:none">下载</button>
                     </td>
                 </tr>
             </table>

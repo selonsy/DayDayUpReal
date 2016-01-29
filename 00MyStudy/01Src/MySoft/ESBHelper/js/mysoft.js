@@ -102,45 +102,8 @@ function checkDBConnectionForBranch1() {
     checkDBConnection(obj);
 }
 
-
 //+----------------------------------------------------------------------  
-//| 功能：测试数据库链接公用函数   
-//| 说明：
-//| 参数：
-//| 返回值：
-//| 创建人：沈金龙
-//| 创建时间：2016-1-22 11:13:36
-//+----------------------------------------------------------------------
-function checkDBConnection(obj) {
-
-    if (!VerfiyInput(obj) == true) return;
-
-    //var option = {
-    //    serviceInfo: strTestLConnectionURL,
-    //    data: obj
-    //};
-
-    ////发起GET请求 
-    //var val = MapExt.postObject(option);
-    //var val = GetDataFromXMLHTTP("/XmlHttpCommon.aspx", "CheckDBConnection", "shenjl", "mysoft", obj);
-
-    $.ajax({
-        type: "POST",
-        url: "XmlHttpCommon.aspx?ywtype=CheckDBConnection",
-        data: obj,
-        dataType: "text",
-        success: function (data) {
-            if (!data || data == "false")
-                alert("数据库连接测试失败！");
-            if (data == "true")
-                alert("数据库连接测试成功！");
-        }
-    });
-};
-
-
-//+----------------------------------------------------------------------  
-//| 功能：生成SQL语句   
+//| 功能：生成SQL语句 
 //| 说明：
 //| 参数：
 //| 返回值：
@@ -161,7 +124,7 @@ function CreateSQLForTrunk() {
     var dbDomain = $("#txtERPDomainForTrunk").val();
 
     var obj = {
-        dbEsbName:dbEsbName,
+        dbEsbName: dbEsbName,
         dbServer: dbServer,
         dbName: dbName,
         dbPort: dbPort,
@@ -173,21 +136,19 @@ function CreateSQLForTrunk() {
         sysSign: sysSign,
         dbDomain: dbDomain
     };
-
-    if (!VerfiyInput(obj) == true) return;
-
-    $.ajax({
-        type: "POST",
-        url: "XmlHttpCommon.aspx?ywtype=CreateSQL",
-        data: obj,
-        dataType: "text",
-        success: function (data) {
-            if (!data || data == "false")
-                alert(displayName + "SQL语句失败！");
-            if (data == "true")
-                alert(displayName + "SQL语句成功！");
-        }
-    });
+    var result = CreateSQL(obj);    
+    if (result == false)
+        alert(displayName + "SQL语句生成失败！");
+    if (result == true) {
+        alert(displayName + "SQL语句生成成功！");        
+        //控制按钮显示
+        $("#btnCreateForTrunk").hide();
+        $("#btnDownLoadForTrunk").show();
+        //添加下载事件
+        $("#btnDownLoadForTrunk").click(function () {
+            alert("就不给下！你打我啊~~");
+        });
+    }
 }
 
 function CreateSQLForBranch1() {
@@ -216,25 +177,25 @@ function CreateSQLForBranch1() {
         dbDomain: dbDomain
     };
 
-    if (!VerfiyInput(obj) == true) return;
-
-    $.ajax({
-        type: "POST",
-        url: "XmlHttpCommon.aspx?ywtype=CreateSQL",
-        data: obj,
-        dataType: "text",
-        success: function (data) {
-            if (!data || data == "false")
-                alert(displayName + "SQL语句失败！");
-            if (data == "true")
-                alert(displayName + "SQL语句成功！");
-        }
-    });
+    var result = CreateSQL(obj);
+    if (result == false)
+        alert(displayName + "SQL语句生成失败！");
+    if (result == true) {
+        alert(displayName + "SQL语句生成成功！");
+        //控制按钮显示
+        $("#btnCreateForBranch1").hide();
+        $("#btnDownLoadForBranch1").show();
+        //添加下载事件
+        $("#btnDownLoadForBranch1").click(function () {
+            alert("就不给下！你打我啊~~");
+        });
+    }
 }
 
+/*--------------------shenjl Add On 2016-1-29 15:42:47 公用函数 Begin --------------------*/
 
 //+----------------------------------------------------------------------  
-//| 功能：公用方法   
+//| 功能：校验输入是否正确  
 //| 说明：
 //| 参数：
 //| 返回值：
@@ -278,6 +239,75 @@ function VerfiyInput(obj) {
         alert("请输入站点地址！");
         return;
     }
-    
+
     return true;
 }
+
+//+----------------------------------------------------------------------  
+//| 功能：生成SQL语句公用函数   
+//| 说明：
+//| 参数：
+//| 返回值：
+//| 创建人：沈金龙
+//| 创建时间：2016-1-22 11:13:36
+//+----------------------------------------------------------------------
+function CreateSQL(obj) {
+    var result = false;
+    if (!VerfiyInput(obj) == true) return;
+
+    $.ajax({
+        type: "POST",
+        url: "XmlHttpCommon.aspx?ywtype=CreateSQL",
+        data: obj,
+        async: false,
+        dataType: "text",
+        success: function (data) {                        
+            if (!data) {
+                alert("异步调用失败！业务类型为：CreateSQL");
+            }
+            else {
+                result = true;
+            }
+        }
+    });
+    myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL","POST",obj,false);
+    return result;
+}
+
+//+----------------------------------------------------------------------  
+//| 功能：测试数据库链接公用函数   
+//| 说明：
+//| 参数：
+//| 返回值：
+//| 创建人：沈金龙
+//| 创建时间：2016-1-22 11:13:36
+//+----------------------------------------------------------------------
+function checkDBConnection(obj) {
+
+    if (!VerfiyInput(obj) == true) return;
+
+    //var option = {
+    //    serviceInfo: strTestLConnectionURL,
+    //    data: obj
+    //};
+
+    ////发起GET请求 
+    //var val = MapExt.postObject(option);
+    //var val = GetDataFromXMLHTTP("/XmlHttpCommon.aspx", "CheckDBConnection", "shenjl", "mysoft", obj);
+
+    $.ajax({
+        type: "POST",
+        url: "XmlHttpCommon.aspx?ywtype=CheckDBConnection",
+        data: obj,
+        dataType: "text",
+        success: function (data) {
+            if (!data || data == "false")
+                alert("数据库连接测试失败！");
+            if (data == "true")
+                alert("数据库连接测试成功！");
+        }
+    });
+};
+
+/*--------------------shenjl Add On 2016-1-29 15:42:47 公用函数 End-----------------------*/
+

@@ -403,6 +403,57 @@ namespace Devin
 
     }
 
+    /// <summary>
+    /// 明源注册表Sa密码
+    /// </summary>
+    public class MysoftEncrption 
+    {
+        /// <summary>
+        /// 明源的解密函数，如：6.707可以解密为95938
+        /// </summary>
+        /// <param name="inStr"></param>
+        /// <returns></returns>
+        //public string funcDeCode(string inStr)
+        //{
+        //    string strBuff;
+        //    int intCode;
+        //    int i;
 
+        //    strBuff = "";
+
+        //    var intLen = inStr.Trim(' ').Length;
+
+        //    var intCode1 = intLen % 3;
+        //    var intCode2 = intLen % 9;
+        //    var intCode3 = intLen % 5;
+            
+        //    if (intLen / 2.0 == (int)Math.Floor(intLen / 2.0))
+        //    {
+        //        intCode = intCode2 + intCode3;
+        //    }
+        //    else
+        //    {
+        //        intCode = intCode1 + intCode3;
+        //    }
+
+        //    for (i = 1; i <= intLen; i++)
+        //    {
+
+        //        strBuff = strBuff + ((char)(Convert.ToInt32(inStr[intLen + 1 - i - 1]) + intCode)).ToString(CultureInfo.InvariantCulture);
+
+        //        if (intCode == intCode1 + intCode3)
+        //        {
+        //            intCode = intCode2 + intCode3;
+        //        }
+        //        else
+        //        {
+        //            intCode = intCode1 + intCode3;
+        //        }
+        //    }
+
+        //    return strBuff + new String(' ', inStr.Length - intLen);
+        //}
+
+    }
 
 }

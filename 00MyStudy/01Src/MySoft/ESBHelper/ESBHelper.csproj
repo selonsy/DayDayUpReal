@@ -72,6 +72,7 @@
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\npm.js" />
+    <Content Include="js\CommonTemp.js" />
     <Content Include="js\login.js" />
     <Content Include="loginforms\choose-layout-assets\1.jpg" />
     <Content Include="loginforms\choose-layout-assets\2.jpg" />

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F3B21BC0-0529-4EE1-AE43-A5C46B6AD33A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyAssets</RootNamespace>
+    <AssemblyName>MyAssets</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrape\css\bootstrap-theme.css" />
+    <Content Include="bootstrape\css\bootstrap-theme.min.css" />
+    <Content Include="bootstrape\css\bootstrap.css" />
+    <Content Include="bootstrape\css\bootstrap.min.css" />
+    <Content Include="bootstrape\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrape\js\bootstrap.js" />
+    <Content Include="bootstrape\js\bootstrap.min.js" />
+    <Content Include="bootstrape\js\npm.js" />
+    <Content Include="login\bootstrap-login-forms\choose-layout-assets\1.jpg" />
+    <Content Include="login\bootstrap-login-forms\choose-layout-assets\2.jpg" />
+    <Content Include="login\bootstrap-login-forms\choose-layout-assets\3.jpg" />
+    <Content Include="login\bootstrap-login-forms\choose-layout-assets\style.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\bootstrap\js\npm.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\css\form-elements.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\css\style.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\ico\favicon.png" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\img\backgrounds\1.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\js\jquery-1.11.1.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\js\jquery-1.11.1.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\js\jquery.backstretch.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\js\jquery.backstretch.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\js\placeholder.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\assets\js\scripts.js" />
+    <Content Include="login\bootstrap-login-forms\form-1\index.html" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\bootstrap\js\npm.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\css\form-elements.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\css\style.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\ico\favicon.png" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\img\backgrounds\1.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\img\backgrounds\2%402x.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\img\backgrounds\2.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\img\backgrounds\3%402x.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\img\backgrounds\3.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\js\jquery-1.11.1.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\js\jquery-1.11.1.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\js\jquery.backstretch.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\js\jquery.backstretch.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\js\placeholder.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\assets\js\scripts.js" />
+    <Content Include="login\bootstrap-login-forms\form-2\index.html" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\bootstrap\js\npm.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\css\form-elements.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\css\style.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\ico\favicon.png" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\img\backgrounds\1.jpg" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\js\jquery-1.11.1.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\js\jquery-1.11.1.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\js\jquery.backstretch.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\js\jquery.backstretch.min.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\js\placeholder.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\assets\js\scripts.js" />
+    <Content Include="login\bootstrap-login-forms\form-3\index.html" />
+    <Content Include="login\bootstrap-login-forms\index.html" />
+    <Content Include="scripts\jquery-1.12.0.min.js" />
+    <Content Include="scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.8.2.js" />
+    <Content Include="scripts\jquery-1.8.2.min.js" />
+    <Content Include="scripts\jquery-ui-1.8.24.js" />
+    <Content Include="scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\knockout-2.2.0.debug.js" />
+    <Content Include="scripts\knockout-2.2.0.js" />
+    <Content Include="scripts\Map.Extensions.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bootstrape\css\bootstrap-theme.css.map" />
+    <None Include="bootstrape\css\bootstrap.css.map" />
+    <None Include="bootstrape\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="bootstrape\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="bootstrape\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="bootstrape\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\bootstrap\css\bootstrap-theme.css.map" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\bootstrap\css\bootstrap.css.map" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\animated.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\bordered-pulled.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\core.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\fixed-width.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\font-awesome.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\icons.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\larger.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\list.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\mixins.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\path.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\rotated-flipped.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\stacked.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\less\variables.less" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\font-awesome.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_animated.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_core.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_fixed-width.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_icons.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_larger.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_list.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_mixins.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_path.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_stacked.scss" />
+    <None Include="login\bootstrap-login-forms\form-1\assets\font-awesome\scss\_variables.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\bootstrap\css\bootstrap-theme.css.map" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\bootstrap\css\bootstrap.css.map" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\animated.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\bordered-pulled.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\core.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\fixed-width.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\font-awesome.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\icons.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\larger.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\list.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\mixins.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\path.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\rotated-flipped.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\stacked.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\less\variables.less" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\font-awesome.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_animated.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_core.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_fixed-width.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_icons.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_larger.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_list.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_mixins.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_path.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_stacked.scss" />
+    <None Include="login\bootstrap-login-forms\form-2\assets\font-awesome\scss\_variables.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\bootstrap\css\bootstrap-theme.css.map" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\bootstrap\css\bootstrap.css.map" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\animated.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\bordered-pulled.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\core.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\fixed-width.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\font-awesome.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\icons.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\larger.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\list.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\mixins.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\path.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\rotated-flipped.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\stacked.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\less\variables.less" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\font-awesome.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_animated.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_core.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_fixed-width.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_icons.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_larger.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_list.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_mixins.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_path.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_stacked.scss" />
+    <None Include="login\bootstrap-login-forms\form-3\assets\font-awesome\scss\_variables.scss" />
+    <None Include="login\gbtagLogin.zip" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

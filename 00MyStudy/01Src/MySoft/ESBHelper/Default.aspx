@@ -4,9 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>ESBHelper</title>
-    <script src="js/jquery-1.12.0.min.js"></script>
-    <script src="js/Map.Extensions.js"></script>
+    <title>ESBHelper</title>    
+    <script src="Assets/js/jquery-1.12.0.min.js"></script>   
     <script src="js/mysoft.js"></script>
     <script src="js/Common.js"></script>
     <link href="Assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -90,7 +89,7 @@
                         <button type="button" id="" class="btn btn-primary">一键测试</button>
                         <button type="button" id="" class="btn btn-primary">一键生成</button>                        
                         <button type="button" id="" class="btn btn-primary">一键下载</button>
-                        <button type="button" id="" class="btn btn-primary">一键装逼</button>
+                        <button type="button" id="btnForZhuangBi" class="btn btn-primary">一键装逼</button>
                     </td>
                     <td>                        
                     </td>

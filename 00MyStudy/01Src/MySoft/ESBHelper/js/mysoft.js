@@ -1,6 +1,13 @@
 ﻿//全局变量定义
 //service url
-var strTestLConnectionURL = "ESBHelper.Services.ESBProviderService.CheckDBConnection";
+//var strTestLConnectionURL = "ESBHelper.Services.ESBProviderService.CheckDBConnection";
+
+var SiteType = {
+    ESBSite: 99,
+    Trunk: 0,
+    Branch1: 1,
+    Branch2: 2
+};
 
 //初始化
 $(document).ready(function () {
@@ -15,18 +22,23 @@ $(document).ready(function () {
         checkDBConnectionForBranch1();
     });
     $("#btnCreateForTrunk").click(function () {
-        CreateSQLForTrunk();
+        CreateSQL(SiteType.Trunk);
     });
     $("#btnCreateForBranch1").click(function () {
-        CreateSQLForBranch1();
+        CreateSQL(SiteType.Branch1);
     });
     //赋值测试
     TestDataForCheckDBConnection();
 
-    // 初始化轮播
-    $(".start-slide").click(function () {
-        $("#myCarousel").carousel('cycle');
+    //// 初始化轮播
+    //$(".start-slide").click(function () {
+    //    $("#myCarousel").carousel('cycle');
+    //});
+
+    $("#btnForZhuangBi").click(function () {
+        alert("咋地，逼都让你装完了，还特么想上天呐！");
     });
+
 });
 
 function TestDataForCheckDBConnection() {
@@ -48,7 +60,7 @@ function TestDataForCheckDBConnection() {
     $("#txtERPIsNewErpForTrunk").val('1');
     $("#txtERPSysSignForTrunk").val('shss304');
     $("#txtERPDomainForTrunk").val('http://localhost:8001');
-    
+
     //辅站点1
     $("#txtERPDataBaseServerForBranch1").val('10.5.10.75\\SQL2005_SH');
     $("#txtERPDataBaseNameForBranch1").val('erp307sp4_shanghai_shss_销售费用');
@@ -110,86 +122,51 @@ function checkDBConnectionForBranch1() {
 //| 创建人：沈金龙
 //| 创建时间：2016-1-22 11:13:36
 //+----------------------------------------------------------------------
-function CreateSQLForTrunk() {
-    var dbEsbName = $("#txtESBDataBaseName").val();
-    var dbServer = $("#txtERPDataBaseServerForTrunk").val();
-    var dbName = $("#txtERPDataBaseNameForTrunk").val();
-    var dbPort = $("#txtERPDataBasePortForTrunk").val();
-    var dbUserName = $("#txtERPDataBaseUserNameForTrunk").val();
-    var dbPassword = $("#txtERPDataBasePasswordForTrunk").val();
-    var providerName = $("#txtERPProviderNameForTrunk").val();
-    var displayName = $("#txtERPDisplayNameForTrunk").val();
-    var isNewErp = $("#txtERPIsNewErpForTrunk").val();
-    var sysSign = $("#txtERPSysSignForTrunk").val();
-    var dbDomain = $("#txtERPDomainForTrunk").val();
-
+function CreateSQL(type) {
     var obj = {
-        dbEsbName: dbEsbName,
-        dbServer: dbServer,
-        dbName: dbName,
-        dbPort: dbPort,
-        dbUserName: dbUserName,
-        dbPassword: dbPassword,
-        providerName: providerName,
-        displayName: displayName,
-        isNewErp: isNewErp,
-        sysSign: sysSign,
-        dbDomain: dbDomain
+        dbEsbName: $("#txtESBDataBaseName").val(),
+        dbServer: type == SiteType.Trunk ? $("#txtERPDataBaseServerForTrunk").val() : $("#txtERPDataBaseServerForBranch1").val(),
+        dbName: type == SiteType.Trunk ? $("#txtERPDataBaseNameForTrunk").val() : $("#txtERPDataBaseNameForBranch1").val(),
+        dbPort: type == SiteType.Trunk ? $("#txtERPDataBasePortForTrunk").val() : $("#txtERPDataBasePortForBranch1").val(),
+        dbUserName: type == SiteType.Trunk ? $("#txtERPDataBaseUserNameForTrunk").val() : $("#txtERPDataBaseUserNameForBranch1").val(),
+        dbPassword: type == SiteType.Trunk ? $("#txtERPDataBasePasswordForTrunk").val() : $("#txtERPDataBasePasswordForBranch1").val(),
+        providerName: type == SiteType.Trunk ? $("#txtERPProviderNameForTrunk").val() : $("#txtERPProviderNameForBranch1").val(),
+        displayName: type == SiteType.Trunk ? $("#txtERPDisplayNameForTrunk").val() : $("#txtERPDisplayNameForBranch1").val(),
+        isNewErp: type == SiteType.Trunk ? $("#txtERPIsNewErpForTrunk").val() : $("#txtERPIsNewErpForBranch1").val(),
+        sysSign: type == SiteType.Trunk ? $("#txtERPSysSignForTrunk").val() : $("#txtERPSysSignForBranch1").val(),
+        dbDomain: type == SiteType.Trunk ? $("#txtERPDomainForTrunk").val() : $("#txtERPDomainForBranch1").val()
     };
-    var result = CreateSQL(obj);    
-    if (result == false)
-        alert(displayName + "SQL语句生成失败！");
-    if (result == true) {
-        alert(displayName + "SQL语句生成成功！");        
+
+    if (!VerfiyInput(obj) == true) return;
+
+    var result = myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "POST", obj, false, CreateSQLAsyncCall);
+
+    if (result == "false")
+        alert(obj.displayName + "SQL语句生成失败！");
+    if (result == "true") {
+        alert(obj.displayName + "SQL语句生成成功！");
         //控制按钮显示
-        $("#btnCreateForTrunk").hide();
-        $("#btnDownLoadForTrunk").show();
-        //添加下载事件
-        $("#btnDownLoadForTrunk").click(function () {
-            alert("就不给下！你打我啊~~");
-        });
+        if (type == SiteType.Trunk) {
+            $("#btnCreateForTrunk").hide();
+            $("#btnDownLoadForTrunk").show();
+            //添加下载事件
+            $("#btnDownLoadForTrunk").click(function () {
+                alert("就不给下！你打我啊~~");
+            });
+        }
+        else {
+            $("#btnCreateForBranch1").hide();
+            $("#btnDownLoadForBranch1").show();
+            //添加下载事件
+            $("#btnDownLoadForBranch1").click(function () {
+                alert("就不给下！你打我啊~~");
+            });
+        }
     }
 }
 
-function CreateSQLForBranch1() {
-    var dbEsbName = $("#txtESBDataBaseName").val();
-    var dbServer = $("#txtERPDataBaseServerForBranch1").val();
-    var dbName = $("#txtERPDataBaseNameForBranch1").val();
-    var dbPort = $("#txtERPDataBasePortForBranch1").val();
-    var dbUserName = $("#txtERPDataBaseUserNameForBranch1").val();
-    var dbPassword = $("#txtERPDataBasePasswordForBranch1").val();
-    var providerName = $("#txtERPProviderNameForBranch1").val();
-    var displayName = $("#txtERPDisplayNameForBranch1").val();
-    var isNewErp = $("#txtERPIsNewErpForBranch1").val();
-    var sysSign = $("#txtERPSysSignForBranch1").val();
-    var dbDomain = $("#txtERPDomainForBranch1").val();
-    var obj = {
-        dbEsbName: dbEsbName,
-        dbServer: dbServer,
-        dbName: dbName,
-        dbPort: dbPort,
-        dbUserName: dbUserName,
-        dbPassword: dbPassword,
-        providerName: providerName,
-        displayName: displayName,
-        isNewErp: isNewErp,
-        sysSign: sysSign,
-        dbDomain: dbDomain
-    };
-
-    var result = CreateSQL(obj);
-    if (result == false)
-        alert(displayName + "SQL语句生成失败！");
-    if (result == true) {
-        alert(displayName + "SQL语句生成成功！");
-        //控制按钮显示
-        $("#btnCreateForBranch1").hide();
-        $("#btnDownLoadForBranch1").show();
-        //添加下载事件
-        $("#btnDownLoadForBranch1").click(function () {
-            alert("就不给下！你打我啊~~");
-        });
-    }
+function CreateSQLAsyncCall(data, textStatus) {
+    //alert(data+"+"+textStatus);
 }
 
 /*--------------------shenjl Add On 2016-1-29 15:42:47 公用函数 Begin --------------------*/
@@ -251,28 +228,28 @@ function VerfiyInput(obj) {
 //| 创建人：沈金龙
 //| 创建时间：2016-1-22 11:13:36
 //+----------------------------------------------------------------------
-function CreateSQL(obj) {
-    var result = false;
-    if (!VerfiyInput(obj) == true) return;
+//function CreateSQL(obj) {
+//    var result = false;
+//    if (!VerfiyInput(obj) == true) return;
 
-    $.ajax({
-        type: "POST",
-        url: "XmlHttpCommon.aspx?ywtype=CreateSQL",
-        data: obj,
-        async: false,
-        dataType: "text",
-        success: function (data) {                        
-            if (!data) {
-                alert("异步调用失败！业务类型为：CreateSQL");
-            }
-            else {
-                result = true;
-            }
-        }
-    });
-    myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL","POST",obj,false);
-    return result;
-}
+//    $.ajax({
+//        type: "POST",
+//        url: "XmlHttpCommon.aspx?ywtype=CreateSQL",
+//        data: obj,
+//        async: false,
+//        dataType: "text",
+//        success: function (data) {
+//            if (!data) {
+//                alert("异步调用失败！业务类型为：CreateSQL");
+//            }
+//            else {
+//                result = true;
+//            }
+//        }
+//    });
+//    myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "POST", obj, false);
+//    return result;
+//}
 
 //+----------------------------------------------------------------------  
 //| 功能：测试数据库链接公用函数   

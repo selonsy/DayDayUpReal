@@ -1,12 +1,14 @@
 ﻿//+----------------------------------------------------------------------  
-//| 功能：公用ajax调用函数
+//| 功能：公用ajax调用函数(jQuery)
 //| 说明： 
 //| 参数：
+//| url:,type:,data:,async:,asyncCall:;
 //| 返回值：
 //| 创建人：沈金龙
 //| 创建时间：2016-1-29 17:26:42
 //+---------------------------------------------------------------------
 function myAjax(url, type, data, async, asyncCall) {
+    var result;
     $.ajax({
         type: type,
         url: url,
@@ -15,19 +17,28 @@ function myAjax(url, type, data, async, asyncCall) {
         dataType: "text",
         //服务器返回的数据，描述状态的字符串
         success: function (data, textStatus) {
-            //回调函数
-            asyncCall();
+            //回调函数            
+            if (asyncCall != undefined)
+                asyncCall(data, textStatus);
+            if (async == false)
+                result = data;
         },
         //XMLHttpRequest对象、错误信息、捕获的错误对象
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             myAjaxError(XMLHttpRequest, textStatus, errorThrown);
         }
     });
+    //回调函数调用在返回值之前
+    return result;
 }
 
+//原生异步调用函数
+function myAjaxXml() {
+    //toodoo
+}
 
 //+----------------------------------------------------------------------  
-//| 功能：公用ajax错误处理函数
+//| 功能：公用ajax错误处理函数(jQuery)
 //| 说明： 
 //| 参数：
 //| xmlHttpRequest：XMLHttpRequest对象

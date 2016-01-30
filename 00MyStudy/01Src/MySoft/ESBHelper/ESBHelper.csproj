@@ -72,7 +72,7 @@
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\npm.js" />
-    <Content Include="js\CommonTemp.js" />
+    <Content Include="garbage\CommonTemp.js" />
     <Content Include="js\login.js" />
     <Content Include="loginforms\choose-layout-assets\1.jpg" />
     <Content Include="loginforms\choose-layout-assets\2.jpg" />
@@ -170,11 +170,10 @@
     <Content Include="images\3.jpg" />
     <Content Include="images\2.jpg" />
     <Content Include="js\Common.js" />
-    <Content Include="js\jquery-1.12.0.min.js" />
-    <Content Include="js\jquery-1.8.2.js" />
-    <Content Include="js\Map.Extensions.js" />
+    <Content Include="Assets\js\jquery-1.12.0.min.js" />
+    <Content Include="garbage\Map.Extensions.js" />
     <Content Include="js\mysoft.js" />
-    <Content Include="js\WF_Temp.js" />
+    <Content Include="garbage\WF_Temp.js" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

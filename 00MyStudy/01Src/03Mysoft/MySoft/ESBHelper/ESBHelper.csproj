@@ -70,6 +70,7 @@
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\npm.js" />
     <Content Include="garbage\CommonTemp.js" />
+    <Content Include="js\Common.js" />
     <Content Include="js\login.js" />
     <Content Include="loginforms\choose-layout-assets\1.jpg" />
     <Content Include="loginforms\choose-layout-assets\2.jpg" />
@@ -166,7 +167,6 @@
     <Content Include="images\1.jpg" />
     <Content Include="images\3.jpg" />
     <Content Include="images\2.jpg" />
-    <Content Include="js\Common.js" />
     <Content Include="Assets\js\jquery-1.12.0.min.js" />
     <Content Include="garbage\Map.Extensions.js" />
     <Content Include="js\mysoft.js" />

@@ -94,7 +94,7 @@ function myAjaxXml() {
 //| 创建人：沈金龙
 //| 创建时间：2016-1-29 17:26:42
 //+---------------------------------------------------------------------
-function myAjaxError(xmlHttpRequest, textStatus, errorThrown){
+function myAjaxError(xmlHttpRequest, textStatus, errorThrown) {
     alert("这是ajax调用失败的错误处理函数！");
 }
 

@@ -51,6 +51,7 @@
     <Content Include="bootstrape\js\bootstrap.js" />
     <Content Include="bootstrape\js\bootstrap.min.js" />
     <Content Include="bootstrape\js\npm.js" />
+    <Content Include="Common.js" />
     <Content Include="login\bootstrap-login-forms\choose-layout-assets\1.jpg" />
     <Content Include="login\bootstrap-login-forms\choose-layout-assets\2.jpg" />
     <Content Include="login\bootstrap-login-forms\choose-layout-assets\3.jpg" />

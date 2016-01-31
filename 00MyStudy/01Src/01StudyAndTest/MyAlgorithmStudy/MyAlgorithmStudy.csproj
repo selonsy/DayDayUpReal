@@ -34,7 +34,7 @@
       <HintPath>..\..\..\00Bin\MyHelper.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\02Lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\00Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

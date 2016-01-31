@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ajax">
+      <HintPath>..\..\..\02Lib\Ajax.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxPro">
+      <HintPath>..\..\..\02Lib\AjaxPro.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -66,7 +72,26 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\bootstrap-theme.css" />
+    <Content Include="Assets\css\bootstrap-theme.min.css" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\jquery-1.12.0.min.js" />
+    <Content Include="Assets\js\npm.js" />
+    <Content Include="Index.aspx" />
+    <Content Include="js\Common.js" />
+    <Content Include="js\index.js" />
     <Content Include="packages.config" />
+    <Content Include="Assets\css\bootstrap-theme.css.map" />
+    <Content Include="Assets\css\bootstrap.css.map" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="XmlHttpCommon.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -78,7 +103,25 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlHttpCommon.aspx.cs">
+      <DependentUpon>XmlHttpCommon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XmlHttpCommon.aspx.designer.cs">
+      <DependentUpon>XmlHttpCommon.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="garbage\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

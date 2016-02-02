@@ -1,0 +1,165 @@
+//
+// Alerts & Toasts
+// --------------------------------------------------
+
+.notifications {
+   position: fixed;
+}
+.notifications.top-right {
+   right: 0;
+   top: 0;
+}
+.notifications > div {
+   position: relative;
+   z-index: @zindexNotification;
+}
+
+
+.alert {
+   text-shadow: none;
+   position: relative;
+   z-index: @zindexNotification;
+   
+   .close:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      color: #FFF;
+   }
+   .alert-heading {
+      font-weight: 600;
+   }
+}
+
+
+.toast {
+   position: relative;
+   .media;
+   width: 400px;
+   margin-bottom: 10px;
+   border: 2px solid lighten(@linkColor, 10%);
+   height: 90px;
+   text-shadow: none;
+   background-color: @linkColor;
+   color: @white;
+   z-index: @zindexNotification;
+}
+.toast-body {
+   .media-body;
+   padding: 13px 60px 13px 15px;
+   height: 64px;
+
+   p {
+      .text-overflow-wrap;
+      margin: 0;
+   }
+}
+
+// For images and videos, set to block
+.toast-object {
+   .media-object;
+   width: 90px;
+   height: 90px;
+//   margin-right: 10px;
+
+   &[class*="icon-"] {
+      display: inline-block;
+      width: 90px;
+      height: 90px;
+      font-size: 90px;
+      line-height: 90px;
+   }
+
+}
+
+// Reset margins on headings for tighter default spacing
+.toast-heading {
+   .media-heading;
+   .text-overflow-wrap;
+   margin: 0;
+}
+
+
+
+.toast {
+   &.toasttext01 {
+      p {
+         height: 60px;
+         line-height: 20px;
+      }
+   }
+   &.toasttext02 {
+      h4 {
+         height: 20px;
+         line-height: 20px;
+      }
+      p {
+         height: 40px;
+         line-height: 20px;
+      }
+   }
+   &.toasttext03 {
+      h4 {
+         height: 40px;
+         line-height: 20px;
+      }
+      p {
+         height: 20px;
+         line-height: 20px;
+      }
+   }
+   &.toasttext04 {
+      h4 {
+         height: 20px;
+         line-height: 20px;
+      }
+      p {
+         height: 20px;
+         line-height: 20px;
+      }
+   }
+}
+
+
+
+.toast .close,
+.modal .close,
+.alert .close {
+   position: absolute;
+   top: 0;
+   right: 0;
+   display: inline-block;
+   min-width: 0;
+   min-height: 0;
+   width: 30px;
+   height: 30px;
+   font-family: 'IcoMoon';
+   font-weight: normal;
+   font-size: 12px;
+   line-height: 12px;
+   text-indent: 0;
+   text-shadow: none;
+   opacity: 1;
+   background-clip: border-box;
+   box-sizing: border-box;
+   border: 0;
+   text-align: center;
+   vertical-align: baseline;
+}
+
+.toast .close:after,
+.modal .close:after,
+.alert .close:after {
+   content: "\e37a";
+   font-size: 14px;
+}
+
+.toast {
+   .close {
+      display: none;
+   }
+
+   &:hover .close {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.4);
+      color: #FFF;
+   }
+}

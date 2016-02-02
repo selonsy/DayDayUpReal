@@ -1,0 +1,145 @@
+//
+// Tables
+// --------------------------------------------------
+
+.table {
+   thead {
+      border-bottom: 1px solid @tableBorder;
+   }
+   th {
+      font-size: 9pt;
+      font-weight: 400;
+      text-transform: uppercase;
+   }
+}
+.table th, .table td {
+   border-top: 0;
+}
+
+// reapply the border
+.table-bordered th, .table-bordered td {
+   border-top: 1px solid @tableBorder;
+}
+
+.table-bordered {
+// For first th or td in the first row in the first thead or tbody
+   thead:first-child tr:first-child th:first-child,
+   tbody:first-child tr:first-child td:first-child {
+      .no-border-radius;
+   }
+   thead:first-child tr:first-child th:last-child,
+   tbody:first-child tr:first-child td:last-child {
+      .no-border-radius;
+   }
+// For first th or td in the first row in the first thead or tbody
+   thead:last-child tr:last-child th:first-child,
+   tbody:last-child tr:last-child td:first-child,
+   tfoot:last-child tr:last-child td:first-child {
+      .no-border-radius;
+   }
+   thead:last-child tr:last-child th:last-child,
+   tbody:last-child tr:last-child td:last-child,
+   tfoot:last-child tr:last-child td:last-child {
+      .no-border-radius;
+   }
+
+// Special fixes to round the left border on the first td/th
+   caption + thead tr:first-child th:first-child,
+   caption + tbody tr:first-child td:first-child,
+   colgroup + thead tr:first-child th:first-child,
+   colgroup + tbody tr:first-child td:first-child {
+      .no-border-radius;
+   }
+   caption + thead tr:first-child th:last-child,
+   caption + tbody tr:first-child td:last-child,
+   colgroup + thead tr:first-child th:last-child,
+   colgroup + tbody tr:first-child td:last-child {
+      .no-border-radius;
+   }
+}
+
+
+
+// TABLE BACKGROUNDS
+// -----------------
+// Exact selectors below required to override .table-striped
+
+.table tbody tr {
+   &.success td {
+      background-color: @successBackground;
+      color: @successText;
+   }
+   &.error td {
+      background-color: @errorBackground;
+      color: @errorText;
+   }
+   &.warning td {
+      background-color: @warningBackground;
+      color: @warningText;
+   }
+   &.info td {
+      background-color: @infoBackground;
+      color: @infoText;
+   }
+}
+
+
+
+// HOVER EFFECT
+// ------------
+.table-hover {
+   tbody {
+      tr:hover td,
+      tr:hover th {
+         background-color: @tableBackgroundHover;
+//         border-top: 1px solid @tableBorderHover;
+//         border-bottom: 1px solid @tableBorderHover;
+      }
+//      tr:hover td:first-child {
+//         border-left: 1px solid @tableBorderHover;
+//      }
+//      tr:hover td:last-child {
+//         border-right: 1px solid @tableBorderHover;
+//      }
+   }
+}
+
+// SINGLE CELL HOVER EFFECT
+// ------------------------
+.table-cell-hover {
+   tbody {
+      tr td:hover,
+      tr th:hover {
+         background-color: @tableBackgroundHover;
+//         border: 1px solid @tableBorderHover;
+      }
+   }
+}
+
+
+
+
+
+/* CheckBox cells */
+table td label.checkbox,
+table th label.checkbox {
+   width: 24px;
+}
+
+
+table th label.checkbox input[type=checkbox]:checked ~ span.metro-checkbox::after,
+table td label.checkbox input[type=checkbox]:checked ~ span.metro-checkbox::after {
+   font-size: 14px;
+   top: 0;
+   left: 0;
+   width: 16px;
+   height: 16px;
+}
+table th label.checkbox input[type=checkbox] ~ span.metro-checkbox::after,
+table td label.checkbox input[type=checkbox] ~ span.metro-checkbox::after {
+   font-size: 14px;
+   top: 0;
+   left: 0;
+   width: 16px;
+   height: 16px;
+}

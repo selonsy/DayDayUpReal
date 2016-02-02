@@ -1,0 +1,228 @@
+.listview.grid-layout {
+   overflow-y: auto;
+   padding: 2px;
+
+   .listview-item {
+      margin-right: 24px;
+   }
+}
+.listview.list-layout {
+   overflow-y: auto;
+   width: 330px;
+   padding: 2px;
+
+   &.big {
+      width: 430px;
+   }
+}
+
+.listview-item {
+   display: inline-block;
+   position: relative;
+   vertical-align: top;
+   .media;
+   width: 282px;
+   min-height: 60px;
+   padding: 10px;
+   margin-bottom: 7px;
+   border: solid 3px transparent;
+   text-shadow: none;
+   color: @white;
+
+   &:hover {
+      border: solid 3px @tile-border-hover;
+      cursor: pointer;
+      color: @white;
+      text-decoration: none;
+   }
+
+   &.selected {
+      border: 3px solid @blu1;
+   }
+   &.selected:after {
+      content: "";
+      position: absolute;
+      display: block;
+      right: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-top: 40px solid @blu1;
+      z-index: 1001;
+   }
+   &.selected:before {
+      position: absolute;
+      top: 0;
+      right: 4px;
+      color: #FFFFFF;
+      content: "\e379";
+   	font-family: 'icomoon';
+      z-index: 1002;
+   }
+
+}
+
+.listview-item-body {
+   .media-body;
+
+   p {
+      .text-overflow-wrap;
+      margin: 0;
+      height: 20px;
+      line-height: 20px;
+
+      &.two-lines {
+         height: 40px;
+         line-height: 20px;
+      }
+      &.three-lines {
+         height: 60px;
+         line-height: 20px;
+      }
+   }
+}
+
+// For images and videos, set to block
+.listview-item-object {
+   .media-object;
+   width: 60px;
+   height: 60px;
+   margin-right: 10px;
+
+   &[class*="icon-"] {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      font-size: 60px;
+      line-height: 60px;
+   }
+}
+
+// Reset margins on headings for tighter default spacing
+.listview-item-heading {
+   .media-heading;
+   .text-overflow-wrap;
+   margin: 0;
+}
+.listview-item-subheading {
+   .media-heading;
+   .text-overflow-wrap;
+   margin: 0;
+   color: @grayLighter;
+}
+
+
+
+// Bigger listview
+.listview-item.big {
+
+   width: 380px;
+
+   .listview-item-object {
+      .media-object;
+      width: 112px;
+      height: 112px;
+      margin-right: 10px;
+
+      &[class*="icon-"] {
+         display: inline-block;
+         width: 112px;
+         height: 112px;
+         font-size: 112px;
+         line-height: 112px;
+      }
+   }
+}
+
+
+/*
+Tile ListView
+*/
+.metro {
+   .tile-listviewitem-container {
+      overflow: auto;
+   }
+
+   .tile-listviewitem {
+      position: relative;
+      display: block;
+      margin: 0 0 13px 0;
+      padding: 7px 0;
+      height: 113px;
+      cursor: pointer;
+      overflow: hidden;
+      text-decoration: none;
+      background-color: transparent;
+
+      img {
+         .box-sizing(border-box);
+         display: inline-block;
+         vertical-align: top;
+         margin-left: 7px;
+         height: 100%;
+         width: 100%;
+      }
+
+      .detail {
+         margin-left: 10px;
+         margin-right: 7px;
+         display: inline-block;
+         vertical-align: top;
+         height: 113px;
+         .text-overflow-wrap;
+
+         .title {
+            font-size: 16px;
+            font-weight: 400;
+         }
+         .subtitle {
+            font-size: 10px;
+            font-weight: 400;
+         }
+      }
+   }
+
+   .tile-listviewitem.selected {
+      background-color: #4617b4;
+      color: #FFF;
+   }
+   .tile-listviewitem:hover {
+      background-color: #b3b3b3;
+   }
+   .tile-listviewitem.selected:hover {
+      background-color: #4617b4;
+   }
+}
+
+
+article.tile-listviewitem-detail {
+   margin-left: 72px;
+
+   header {
+      img {
+         display: inline-block;
+         vertical-align: top;
+      }
+      .titles {
+         display: inline-block;
+         vertical-align: top;
+
+         h1 {
+            font-size: 24px;
+            font-weight: 300;
+         }
+         h2 {
+            font-size: 14px;
+            font-weight: 300;
+         }
+      }
+   }
+
+   section {
+      padding-top: 20px;
+   }
+
+
+}
+

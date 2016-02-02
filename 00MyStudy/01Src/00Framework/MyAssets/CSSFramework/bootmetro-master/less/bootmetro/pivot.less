@@ -1,0 +1,77 @@
+// PIVOT
+// ----------------
+.pivot {
+   position: relative;
+
+   > .pivot-headers {
+      margin-bottom: 10px;
+
+      > a {
+         margin: 0 10px 0 0;
+         font-weight: 300;
+         text-transform: lowercase;
+         text-decoration: none;
+         font-size: 26px;
+         font-weight: 300;
+         line-height: 34px;
+         color: @pivotHeadersColor;
+
+         &:hover {
+            color: @pivotHeadersHoverColor;
+         }
+         &.active {
+            color: @pivotHeadersActiveColor;
+            font-weight: 400;
+         }
+      }
+   }
+
+
+   > .pivot-items {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+
+
+      > .pivot-item {
+         display: none;
+         position: relative;
+         .transition(.4s ease-in-out left);
+      }
+
+      > .active,
+      > .next,
+      > .prev { display: block; }
+
+      > .active {
+         left: 0;
+      }
+
+      > .next,
+      > .prev {
+         position: absolute;
+         top: 0;
+         width: 100%;
+      }
+
+      > .next {
+         left: 100%;
+      }
+      > .prev {
+         left: -100%;
+      }
+      > .next.left,
+      > .prev.right {
+         left: 0;
+      }
+
+      > .active.left {
+         left: -100%;
+      }
+      > .active.right {
+         left: 100%;
+      }
+
+   }
+
+}

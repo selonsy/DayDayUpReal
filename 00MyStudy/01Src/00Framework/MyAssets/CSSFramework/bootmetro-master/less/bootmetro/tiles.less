@@ -1,0 +1,666 @@
+.bg-color-orange {
+   background-color: @orange !important;
+}
+.bg-color-purple {
+   background-color: @purple !important;
+}
+.bg-color-greenDark {
+   background-color: @greenDark !important;
+}
+.bg-color-blue {
+   background-color: @blue !important;
+}
+.bg-color-red {
+   background-color: @red !important;
+}
+.bg-color-green {
+   background-color: @green !important;
+}
+.bg-color-blueDark {
+   background-color: @blueDark !important;
+}
+.bg-color-yellow {
+   background-color: @yellow !important;
+}
+.bg-color-pink {
+   background-color: @pink !important;
+}
+.bg-color-darken {
+   background-color: #1c1c1c !important;
+}
+.bg-color-gray {
+   background-color: @gray !important;
+}
+.bg-color-grayLight {
+   background-color: @grayLight !important;
+}
+
+@tile-border-hover: #225a68;
+
+.metro {
+   position: relative;
+
+}
+
+.tile-column {
+   position: relative;
+   float: left;
+   width: auto;
+   height: auto;
+//   margin-right: 75px;
+}
+   .tile-column-span-1 {
+      .tile-column;
+      width: 162px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-2 {
+      .tile-column;
+      width: 324px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-3 {
+      .tile-column;
+      width: 480px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-4 {
+      .tile-column;
+      width: 640px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-5 {
+      .tile-column;
+      width: 640px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-6 {
+      .tile-column;
+      width: 800px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-7 {
+      .tile-column;
+      width: 960px;
+      margin-left: 0 !important;
+   }
+   .tile-column-span-8 {
+      .tile-column;
+      width: 1120px;
+      margin-left: 0 !important;
+   }
+
+
+.panorama {
+   overflow: hidden;
+   position: relative;
+   .box-sizing(border-box);
+   width: 100%;
+   margin: 0 40px;
+
+   &.nohidden {
+      width: auto;
+      overflow: inherit;
+   }
+
+   .panorama-sections {
+      height: auto;
+      position: relative;
+      overflow: hidden;
+      width: 10000px;
+      padding-bottom: 24px;
+
+      h2 {
+         margin-left: 5px;
+         font-weight: 300;
+         text-transform: lowercase;
+      }
+
+      .panorama-section {
+         position: relative;
+         float: left;
+         width: auto;
+         height: auto;
+         margin-right: 75px;
+         &.tile-span-1 {
+            width: 160px;
+            margin-left: 0;
+         }
+         &.tile-span-2 {
+            width: 320px;
+            margin-left: 0;
+         }
+         &.tile-span-3 {
+            width: 480px;
+            margin-left: 0;
+         }
+         &.tile-span-4 {
+            width: 640px;
+            margin-left: 0;
+         }
+         &.tile-span-5 {
+            width: 640px;
+            margin-left: 0;
+         }
+         &.tile-span-6 {
+            width: 800px;
+            margin-left: 0;
+         }
+         &.tile-span-7 {
+            width: 960px;
+            margin-left: 0;
+         }
+         &.tile-span-8 {
+            width: 1120px;
+            margin-left: 0;
+         }
+      }
+
+   }
+
+}
+
+.metro {
+   .tile {
+      position: relative;
+      display: block;
+      float: left;
+      margin: 5px;
+      padding: 0;
+      width: 150px;
+      height: 150px;
+      color: #FFF;
+      cursor: pointer;
+      overflow: hidden;
+      text-decoration: none;
+      background-color: #2C83EF;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+         -moz-background-clip: padding;     /* Firefox 3.6 */
+              background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+      &.selected {
+         border: 3px solid @blu1;
+      }
+      &.selected:after {
+         content: "";
+         position: absolute;
+         display: block;
+         right: 0;
+         top: 0;
+         width: 0;
+         height: 0;
+         border-left: 40px solid transparent;
+         border-top: 40px solid @blu1;
+         z-index: 1001;
+      }
+      &.selected:before {
+         position: absolute;
+         top: 0;
+         right: 4px;
+         color: #FFFFFF;
+         content: "\e379";
+         font-family: 'icomoon';
+         z-index: 1002;
+      }
+
+      .app-label, .label {
+         bottom: 5px;
+         font-size: 12px;
+         left: 20px;
+         position: absolute;
+      }
+      .app-count, .count {
+         position: absolute;
+         right: 20px;
+         bottom: 5px;
+         font-size: 14px;
+         font-weight: bold;
+      }
+
+      .image-wrapper {
+         span.icon {
+            font-size: 80px;
+            height: 80px;
+            line-height: 80px;
+            width: 80px;
+         }
+      }
+
+      .textover-wrapper {
+         position: absolute;
+         bottom: 0;
+//         width: 270px;
+         height: 48px;
+         padding: 2px 20px;
+         background-color: inherit;
+         &.transparent {
+            background-color: rgba(0, 0, 0, 0.7);
+         }
+      }
+
+      .text-header {
+         font-weight: 300;
+         font-size: 34px;
+         line-height: 36px;
+         max-height: 36px;
+         text-align: left;
+         overflow: hidden;
+      }
+      .text-header3 {
+         font-weight: 300;
+         font-size: 34px;
+         line-height: 36px;
+         text-align: left;
+         max-height: 110px;
+         overflow: hidden;
+      }
+      .column3-text {
+         display: block;
+         float: left;
+         width: 200px;
+      }
+      .column3-label {
+         display: block;
+         float: left;
+         width: 50px;
+      }
+      .column2-text {
+         display: block;
+         float: left;
+         width: 160px;
+      }
+      .column2-label {
+         display: block;
+         float: left;
+         width: 90px;
+      }
+      .text2 {
+         font-size: 15px;
+         font-weight: 300;
+         line-height: 20px;
+         max-height: 44px;
+         overflow: hidden;
+         text-align: left;
+      }
+      .text3 {
+         font-size: 15px;
+         line-height: 18px;
+         font-weight: 300;
+         text-align: left;
+         max-height: 56px;
+         overflow: hidden;
+      }
+      .text4 {
+         font-size: 15px;
+         line-height: 18px;
+         font-weight: 300;
+         text-align: left;
+         max-height: 72px;
+         overflow: hidden;
+      }
+      .column {
+         display: block;
+         float: left;
+         width: 130px;
+      }
+      .text5 {
+         font-size: 15px;
+         line-height: 18px;
+         font-weight: 300;
+         text-align: left;
+         max-height: 92px;
+         overflow: hidden;
+      }
+      .text {
+         font-size: 15px;
+         line-height: 18px;
+         height: 18px;
+         font-weight: 300;
+         text-align: left;
+         overflow: hidden;
+      }
+   }
+   .tile:hover {
+      outline: 3px @tile-border-hover solid;
+   }
+
+   .tile.app {
+
+      .image-wrapper {
+         display: block;
+         width: 150px;
+         height: 80px;
+         margin-top: 20px;
+         padding: 8px 0;
+         text-align: center;
+         vertical-align: middle;
+         img {
+            max-width: 80px;
+            max-height: 80px;
+            margin: 0 auto;
+         }
+      }
+   }
+
+   .tile.square.text {
+      width: 110px;
+      height: 110px;
+      padding: 20px;
+      .text-big {
+         font-size: 76px;
+         line-height: 76px;
+         text-align: left;
+         overflow: hidden;
+      }
+   }
+   .tile.square.text.tilesquareblock {
+      .text {
+         font-size: 14px;
+         font-weight: bold;
+         text-align: left;
+         overflow: hidden;
+      }
+   }
+   .tile.square.image {
+      width: 150px;
+      height: 150px;
+      padding: 0;
+      img {
+         max-width: 150px;
+         max-height: 150px;
+      }
+   }
+   .tile.squarepeek {
+      width: 150px;
+      height: 312px;
+
+      img {
+         width: 150px;
+         height: 150px;
+         max-width: 150px;
+         max-height: 150px;
+      }
+      .text-inner {
+         width: 110px;
+         height: 110px;
+         padding: 20px;
+      }
+   }
+   .tile.wide.app {
+      width: 310px;
+      height: 150px;
+      .image-wrapper {
+         width: 310px;
+      }
+   }
+   .tile.wide.text {
+      width: 270px;
+      height: 110px;
+      padding: 20px;
+      .column-text-big {
+         display: block;
+         float: left;
+         width: 80px;
+         margin-left: 10px;
+         .text-big {
+            font-size: 74px;
+            line-height: 60px;
+            text-align: right;
+            overflow: hidden;
+         }
+      }
+      .column-text {
+         display: block;
+         float: left;
+         width: 180px;
+      }
+   }
+   .tile.wide.imagetext {
+      width: 270px;
+      height: 110px;
+      padding: 20px;
+      .image-wrapper {
+         display: block;
+         float: left;
+         width: 80px;
+         height: 80px;
+         margin-right: 10px;
+         img {
+            max-width: 80px;
+            max-height: 80px;
+         }
+      }
+      .column-text {
+         display: block;
+         float: left;
+         width: 180px;
+      }
+   }
+   .tile.wide.image {
+      width: 310px;
+      height: 150px;
+
+      img {
+         max-width: 310px;
+//         max-height: 150px;
+      }
+
+      .mini-tiles {
+         display: inline-block;
+         float: left;
+         width: 152px;
+         height: 150px;
+         img {
+            display: inline-block;
+            float: left;
+            max-width: 75px;
+            max-height: 75px;
+            border-left: 1px solid #2A2A2A;
+         }
+      }
+   }
+   .tile.wide.imagetext.wideimage {
+      width: 310px;
+      height: 150px;
+      padding: 0;
+   }
+   .tile.wide.image.collection {
+      img {
+         max-width: 158px;
+         max-height: 150px;
+         float: left;
+      }
+   }
+
+
+
+   .tile.widepeek {
+      width: 310px;
+      height: 300px;
+
+      .tile {
+         margin: 0;
+         &:hover {
+            outline: 0;
+         }
+      }
+   }
+
+
+
+
+   .tile {
+      &.square,
+      &.squarepeek {
+         .textover-wrapper {
+            width: 130px;
+         }
+      }
+      &.wide,
+      &.widepeek {
+         .textover-wrapper {
+            width: 270px;
+         }
+      }
+   }
+
+
+}
+
+
+#panorama-scroll-prev,
+#panorama-scroll-next {
+   position: absolute;
+   top: 96px;
+   left: 4px;
+
+   .win-commandicon;
+   .win-commandring;
+   font-family: 'icomoon';
+   font-style: normal;
+   font-variant: normal;
+   font-weight: normal;
+   line-height: 1;
+   text-transform: none;
+   background: none;
+   background-clip: border-box;
+   text-align: center;
+   width: 32px;
+   height: 32px;
+   text-decoration: none;
+   outline: 0;
+   z-index: 1061;
+}
+#panorama-scroll-next {
+   left: auto;
+   right: 4px;
+}
+
+#panorama-scroll-prev:hover,
+#panorama-scroll-next:hover {
+   background-color: rgba(255, 255, 255, 0.13);
+   border-color: rgba(255, 255, 255, 0.6);
+}
+
+   #panorama-scroll-prev:before {
+      content: "\e2a4";
+      font-size: 20px;
+      line-height: 32px; /* line-height must match the content box height. */
+      vertical-align: top;
+   }
+   #panorama-scroll-next:before {
+      content: "\e2a0";
+      font-size: 20px;
+      line-height: 32px; /* line-height must match the content box height. */
+      vertical-align: top;
+   }
+
+
+   #panorama-scroll-prev-bkg,
+   #panorama-scroll-next-bkg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 40px;
+      height: 100%;
+      background-color: transparent;
+      z-index: 1060;
+   }
+   #panorama-scroll-next-bkg {
+      left: auto;
+      right: 0;
+   }
+
+   #panorama-scroll-prev-bkg:hover,
+   #panorama-scroll-next-bkg:hover {
+      background-color: rgba(0,0,0, 0.7);
+   }
+
+
+
+// Responsive Tiles (experimental)
+
+.metro-responsive-tiles {
+   .tile {
+      position: relative;
+      display: block;
+      float: left;
+      margin: 5px;
+      padding: 20px;
+      .box-sizing(border-box);
+      width: 100%;
+      height: 150px;
+      color: #FFF;
+      cursor: pointer;
+      overflow: hidden;
+      text-decoration: none;
+      background-color: #2C83EF;
+
+      .image-wrapper {
+         display: block;
+         float: left;
+         height: 80px;
+         width: 80px;
+         span.icon {
+            font-size: 80px;
+            height: 80px;
+            line-height: 80px;
+            width: 80px;
+         }
+      }
+
+      .text-header {
+         font-weight: 300;
+         font-size: 34px;
+         line-height: 36px;
+         max-height: 36px;
+         text-align: left;
+         overflow: hidden;
+      }
+      .text-header2 {
+         font-weight: 300;
+         font-size: 30px;
+         line-height: 32px;
+         max-height: 80px;
+         text-align: left;
+         overflow: hidden;
+      }
+
+      .column-text {
+         display: block;
+         float: left;
+         padding-left: 10px;
+         width: 180px;
+
+         .text-header3 {
+            font-size: 34px;
+            font-weight: 300;
+            line-height: 36px;
+            max-height: 110px;
+            overflow: hidden;
+            text-align: left;
+         }
+      }
+
+      .tile-form {
+         margin: 10px 0;
+      }
+
+   }
+}
+
+//
+//
+//
+//// Special undocumented tiles for ads
+//#ad-container {
+//   background-color: #0072BC;
+//   height: 90px;
+//   margin-top: 10px;
+//   text-align: center;
+//   width: 100%;
+//}
+//
+//

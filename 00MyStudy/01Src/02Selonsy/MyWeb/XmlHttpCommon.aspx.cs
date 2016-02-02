@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Text;
 using System.IO;
 using Ajax;
-using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace MyWeb

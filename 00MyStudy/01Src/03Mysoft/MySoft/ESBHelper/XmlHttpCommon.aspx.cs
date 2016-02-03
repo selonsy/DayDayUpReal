@@ -7,10 +7,19 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Text;
 using System.IO;
+using System.Web.Services;
+using ESBHelper.Entity;
 namespace ESBHelper
 {
     public partial class XmlHttpCommon : System.Web.UI.Page
     {
+        //原始文件路径
+        string origiFilePathForESB = @"D:\公用文件\ESBHelper\ESBSiteSql.txt";
+        string origiFilePathForERP = @"D:\公用文件\ESBHelper\ERPSiteSql.txt";
+        string origiFilePathForERP_1 = @"D:\公用文件\ESBHelper\NewERPFuncAndSP.txt";
+        //目标文件夹路径
+        string targetFilePath = @"D:\公用文件\ESBHelper\CompletedSql\";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string strYwType, strOnlyFlag, strTxt, strTemp;
@@ -100,7 +109,7 @@ namespace ESBHelper
             {
                 if (dbConnection != null)
                     dbConnection.Close();
-            }            
+            }
             return result;
         }
 
@@ -108,82 +117,231 @@ namespace ESBHelper
         /// 生成格式化后的SQL文件
         /// </summary>
         /// <returns></returns>
-        private string CreateSQL()
+        //private string CreateSQL1()
+        //{
+        //    string dbEsbName, dbServer, dbName, dbPort, dbUserName, dbPassword, dbDomain;
+        //    string providerName, displayName, isNewErp, sysSign;
+        //    string result = "true";
+
+        //    dbEsbName = Request.Form["dbEsbName"].ToString();
+        //    dbServer = Request.Form["dbServer"].ToString();
+        //    dbName = Request.Form["dbName"].ToString();
+        //    dbPort = Request.Form["dbPort"].ToString();
+        //    dbUserName = Request.Form["dbUserName"].ToString();
+        //    dbPassword = Request.Form["dbPassword"].ToString();
+        //    dbDomain = Request.Form["dbDomain"].ToString();
+        //    providerName = Request.Form["providerName"].ToString();
+        //    displayName = Request.Form["displayName"].ToString();
+        //    isNewErp = Request.Form["isNewErp"].ToString();
+        //    sysSign = Request.Form["sysSign"].ToString();
+
+        //    StringBuilder MyStringBuilder = new StringBuilder();
+        //    try
+        //    {
+        //        StreamReader sr = new StreamReader(origiFilePath, Encoding.Default);
+        //        String line;
+        //        while ((line = sr.ReadLine()) != null)
+        //        {
+        //            if (line.IndexOf("%ESBDataBaseName%") != -1)
+        //            {
+        //                line = line.Replace("%ESBDataBaseName%", dbEsbName);
+        //            }
+        //            if (line.IndexOf("%ProviderName%") != -1)
+        //            {
+        //                line = line.Replace("%ProviderName%", providerName);
+        //            }
+        //            if (line.IndexOf("%DisplayName%") != -1)
+        //            {
+        //                line = line.Replace("%DisplayName%", displayName);
+        //            }
+        //            if (line.IndexOf("%DataBaseName%") != -1)
+        //            {
+        //                line = line.Replace("%DataBaseName%", dbName);
+        //            }
+        //            if (line.IndexOf("%SysSign%") != -1)
+        //            {
+        //                line = line.Replace("%SysSign%", sysSign);
+        //            }
+        //            if (line.IndexOf("%IsNewErp%") != -1)
+        //            {
+        //                line = line.Replace("%IsNewErp%", isNewErp);
+        //            }
+        //            if (line.IndexOf("%Domain%") != -1)
+        //            {
+        //                line = line.Replace("%Domain%", dbDomain);
+        //            }
+        //            if (line.IndexOf("%DataBaseServer%") != -1)
+        //            {
+        //                line = line.Replace("%DataBaseServer%", dbServer);
+        //            }
+        //            if (line.IndexOf("%DataBaseUserName%") != -1)
+        //            {
+        //                line = line.Replace("%DataBaseUserName%", dbUserName);
+        //            }
+        //            if (line.IndexOf("%DataBasePassword%") != -1)
+        //            {
+        //                line = line.Replace("%DataBasePassword%", dbPassword);
+        //            }
+        //            if (line.IndexOf("%Port%") != -1)
+        //            {
+        //                line = line.Replace("%Port%", dbPort);
+        //            }
+        //            MyStringBuilder.AppendLine(line);
+        //        }
+        //        //文件名称
+        //        string targetFileName = displayName + "-" + DateTime.Now.ToString("D") + ".sql";
+        //        //创建文件
+        //        FileStream fs = new FileStream(targetFilePath + targetFileName, FileMode.Create);
+        //        //获得字节数组
+        //        byte[] data = System.Text.Encoding.Default.GetBytes(MyStringBuilder.ToString());
+        //        //写入文件
+        //        fs.Write(data, 0, data.Length);
+        //        //清空缓冲区、关闭流
+        //        fs.Flush();
+        //        fs.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result = "false";
+        //    }
+        //    return result;
+        //}
+
+        /// <summary>
+        /// 获取格式化后的字符串
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private string GetFormatedLine(string input)
         {
-            string dbEsbName, dbServer, dbName, dbPort, dbUserName, dbPassword, dbDomain;
-            string providerName, displayName, isNewErp, sysSign;
-            string result = "true";
-            //原始文件路径
-            string origiFilePath = @"D:\03MySite\01ESBHelper\ESBSiteSql.txt";
-            //目标文件路径
-            string targetFilePath = @"D:\03MySite\01ESBHelper\CompletedSql\";
+            return "";
+        }
+
+        public string CreateSQL()
+        {
+            bool result = false;
+            string createType = Request.Form["createType"];
+
+            if (createType =="99")//SiteType.ESBSite.ToString() 
+            {
+                result = CreateSqlForESB();
+            }
+            else if (createType == "0" || createType == "1")
+            {
+                result = CreateSqlForERP();
+            }
+
+            if (result == false) return "false";
+            return "true";
+        }
+
+        public bool CreateSqlForESB()
+        {
+            string dbEsbName,dbServer,dbPort,dbUserName,dbPassword;
+            string dbName1,dbDomain1,providerName1, displayName1, isNewErp1, sysSign1;
+            string dbName2,dbDomain2,providerName2, displayName2, isNewErp2, sysSign2;
+
             dbEsbName = Request.Form["dbEsbName"].ToString();
-            dbServer = Request.Form["dbServer"].ToString();
-            dbName = Request.Form["dbName"].ToString();
+            dbServer = Request.Form["dbServer"].ToString();            
             dbPort = Request.Form["dbPort"].ToString();
             dbUserName = Request.Form["dbUserName"].ToString();
             dbPassword = Request.Form["dbPassword"].ToString();
-            dbDomain = Request.Form["dbDomain"].ToString();
-            providerName = Request.Form["providerName"].ToString();
-            displayName = Request.Form["displayName"].ToString();
-            isNewErp = Request.Form["isNewErp"].ToString();
-            sysSign = Request.Form["sysSign"].ToString();
+
+            dbName1 = Request.Form["dbName1"].ToString();
+            dbDomain1 = Request.Form["dbDomain1"].ToString();
+            providerName1 = Request.Form["providerName1"].ToString();
+            displayName1 = Request.Form["displayName1"].ToString();
+            isNewErp1 = Request.Form["isNewErp1"].ToString();
+            sysSign1 = Request.Form["sysSign1"].ToString();
+
+            dbName2 = Request.Form["dbName2"].ToString();
+            dbDomain2 = Request.Form["dbDomain2"].ToString();
+            providerName2 = Request.Form["providerName2"].ToString();
+            displayName2 = Request.Form["displayName2"].ToString();
+            isNewErp2 = Request.Form["isNewErp2"].ToString();
+            sysSign2 = Request.Form["sysSign2"].ToString();
 
             StringBuilder MyStringBuilder = new StringBuilder();
             try
             {
-                StreamReader sr = new StreamReader(origiFilePath, Encoding.Default);
+                StreamReader sr = new StreamReader(origiFilePathForESB, Encoding.Default);
                 String line;
                 while ((line = sr.ReadLine()) != null)
                 {                    
-                    if (line.IndexOf("%ESBDataBaseName%") != -1)
+                    if (line.IndexOf("%dbEsbName%") != -1)
                     {
-                        line = line.Replace("%ESBDataBaseName%", dbEsbName);
+                        line = line.Replace("%dbEsbName%", dbEsbName);
                     }
-                    if (line.IndexOf("%ProviderName%") != -1)
+                    if (line.IndexOf("%dbServer%") != -1)
                     {
-                        line = line.Replace("%ProviderName%", providerName);
+                        line = line.Replace("%dbServer%", dbServer);
                     }
-                    if (line.IndexOf("%DisplayName%") != -1)
+                    if (line.IndexOf("%dbPort%") != -1)
                     {
-                        line = line.Replace("%DisplayName%", displayName);
+                        line = line.Replace("%dbPort%", dbPort);
                     }
-                    if (line.IndexOf("%DataBaseName%") != -1)
+                    if (line.IndexOf("%dbUserName%") != -1)
                     {
-                        line = line.Replace("%DataBaseName%", dbName);
+                        line = line.Replace("%dbUserName%", dbUserName);
                     }
-                    if (line.IndexOf("%SysSign%") != -1)
+                    if (line.IndexOf("%dbPassword%") != -1)
                     {
-                        line = line.Replace("%SysSign%", sysSign);
+                        line = line.Replace("%dbPassword%", dbPassword);
                     }
-                    if (line.IndexOf("%IsNewErp%") != -1)
+
+                    if (line.IndexOf("%dbName1%") != -1)
                     {
-                        line = line.Replace("%IsNewErp%", isNewErp);
+                        line = line.Replace("%dbName1%", dbName1);
                     }
-                    if (line.IndexOf("%Domain%") != -1)
+                    if (line.IndexOf("%dbDomain1%") != -1)
                     {
-                        line = line.Replace("%Domain%", dbDomain);
+                        line = line.Replace("%dbDomain1%", dbDomain1);
                     }
-                    if (line.IndexOf("%DataBaseServer%") != -1)
+                    if (line.IndexOf("%providerName1%") != -1)
                     {
-                        line = line.Replace("%DataBaseServer%", dbServer);
+                        line = line.Replace("%providerName1%", providerName1);
                     }
-                    if (line.IndexOf("%DataBaseUserName%") != -1)
+                    if (line.IndexOf("%displayName1%") != -1)
                     {
-                        line = line.Replace("%DataBaseUserName%", dbUserName);
+                        line = line.Replace("%displayName1%", displayName1);
                     }
-                    if (line.IndexOf("%DataBasePassword%") != -1)
+                    if (line.IndexOf("%isNewErp1%") != -1)
                     {
-                        line = line.Replace("%DataBasePassword%", dbPassword);
+                        line = line.Replace("%isNewErp1%", isNewErp1);
                     }
-                    if (line.IndexOf("%Port%") != -1)
+                    if (line.IndexOf("%sysSign1%") != -1)
                     {
-                        line = line.Replace("%Port%", dbPort);
+                        line = line.Replace("%sysSign1%", sysSign1);
+                    }
+
+                    if (line.IndexOf("%dbName2%") != -1)
+                    {
+                        line = line.Replace("%dbName2%", dbName2);
+                    }
+                    if (line.IndexOf("%dbDomain2%") != -1)
+                    {
+                        line = line.Replace("%dbDomain2%", dbDomain2);
+                    }
+                    if (line.IndexOf("%providerName2%") != -1)
+                    {
+                        line = line.Replace("%providerName2%", providerName2);
+                    }
+                    if (line.IndexOf("%displayName2%") != -1)
+                    {
+                        line = line.Replace("%displayName2%", displayName2);
+                    }
+                    if (line.IndexOf("%isNewErp2%") != -1)
+                    {
+                        line = line.Replace("%isNewErp2%", isNewErp2);
+                    }
+                    if (line.IndexOf("%sysSign2%") != -1)
+                    {
+                        line = line.Replace("%sysSign2%", sysSign2);
                     }
                     MyStringBuilder.AppendLine(line);
                 }
                 //文件名称
-                string targetFileName = displayName + "-" + DateTime.Now.ToString("D") + ".sql";
+                string targetFileName = "ESB站点SQL语句-" + DateTime.Now.ToString("D") + ".sql";
                 //创建文件
                 FileStream fs = new FileStream(targetFilePath + targetFileName, FileMode.Create);                                  
                 //获得字节数组
@@ -196,19 +354,67 @@ namespace ESBHelper
             }
             catch (Exception ex)
             {
-                result = "false";
+                return false;
             }
-            return result;
+            return true;            
         }
 
-        /// <summary>
-        /// 获取格式化后的字符串
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        private string GetFormatedLine(string input)
+        public bool CreateSqlForERP()
         {
-            return "";
+            string dbName1, dbName2, sysSign1, sysSign2, isNewErp;
+
+            dbName1 = Request.Form["dbName1"].ToString();
+            dbName2 = Request.Form["dbName2"].ToString();
+            sysSign1 = Request.Form["sysSign1"].ToString();
+            sysSign2 = Request.Form["sysSign2"].ToString();
+            isNewErp = Request.Form["isNewErp"].ToString();
+
+            StringBuilder MyStringBuilder = new StringBuilder();
+            try
+            {
+                StreamReader sr = new StreamReader(origiFilePathForERP, Encoding.Default);
+                String line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.IndexOf("%ERPDataBaseName1%") != -1)
+                    {
+                        line = line.Replace("%ERPDataBaseName1%", dbName1);
+                    }
+                    if (line.IndexOf("%ERPDataBaseName2%") != -1)
+                    {
+                        line = line.Replace("%ERPDataBaseName2%", dbName2);
+                    }
+                    if (line.IndexOf("%SysSign1%") != -1)
+                    {
+                        line = line.Replace("%SysSign1%", sysSign1);
+                    }     
+                    if (line.IndexOf("%SysSign2%") != -1)
+                    {
+                        line = line.Replace("%SysSign2%", sysSign2);
+                    } 
+                    if (line.IndexOf("%IsNewErp%") != -1)
+                    {
+                        line = line.Replace("%IsNewErp%", isNewErp);
+                    }
+                    MyStringBuilder.AppendLine(line);
+                }
+                //文件名称
+                string targetFileName = sysSign1+"SQL语句-" + DateTime.Now.ToString("D") + ".sql";
+                //创建文件
+                FileStream fs = new FileStream(targetFilePath + targetFileName, FileMode.Create);
+                //获得字节数组
+                byte[] data = System.Text.Encoding.Default.GetBytes(MyStringBuilder.ToString());
+                //写入文件
+                fs.Write(data, 0, data.Length);
+                //清空缓冲区、关闭流
+                fs.Flush();
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;            
         }
     }
 }

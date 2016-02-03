@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>ESBHelper</title>    
-    <script src="Assets/js/jquery-1.12.0.min.js"></script>   
+    <title>ESBHelper</title>
+    <script src="Assets/js/jquery-1.12.0.min.js"></script>
     <script src="js/mysoft.js"></script>
     <script src="js/Common.js"></script>
     <link href="Assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -84,16 +84,16 @@
                     </td>
                     <td></td>
                 </tr>
-                <tr style="text-align:left">
+                <tr style="text-align: left">
                     <td>
-                        <button type="button" id="" class="btn btn-primary">一键测试</button>
-                        <button type="button" id="" class="btn btn-primary">一键生成</button>                        
-                        <button type="button" id="" class="btn btn-primary">一键下载</button>
+                        <button type="button" id="btnFastTest" class="btn btn-primary">一键测试</button>
+                        <button type="button" id="btnFastCreate" class="btn btn-primary">一键生成</button>
+                        <button type="button" id="btnFastDownload" class="btn btn-primary">一键下载</button>
                         <button type="button" id="btnForZhuangBi" class="btn btn-primary">一键装逼</button>
                     </td>
-                    <td>                        
-                    </td>
-                </tr><%--                
+                    <td></td>
+                </tr>
+                <%--                
                 <tr style="height: 34px">
                     <td></td>
                     <td></td>
@@ -145,6 +145,8 @@
                     <td></td>
                     <td style="float: right">
                         <button type="button" id="btnTestEsbDBInfo" class="btn btn-primary">数据库连接测试</button>
+                        <button type="button" id="btnCreateForESB" class="btn btn-primary">生成</button>
+                        <button type="button" id="btnDownLoadForESB" class="btn btn-primary" style="display: none">下载</button>
                     </td>
                 </tr>
 
@@ -158,35 +160,37 @@
                     <td>
                         <div class="input-group">
                             <span class="input-group-addon" style="width: 110px">服务器地址</span>
-                            <input id="txtERPDataBaseServerForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">
+                            <input id="txtERPDataBaseServer" type="text" class="form-control" placeholder="" style="width: 230px">
                         </div>
                     </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 110px">端口</span>
+                            <input id="txtERPDataBasePort" type="text" class="form-control" placeholder="" style="width: 230px">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 110px">数据库账号</span>
+                            <input id="txtERPDataBaseUserName" type="text" class="form-control" placeholder="" style="width: 230px">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 110px">数据库密码</span>
+                            <input id="txtERPDataBasePassword" type="text" class="form-control" placeholder="" style="width: 230px">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <div class="input-group">
                             <span class="input-group-addon" style="width: 110px">数据库名称</span>
                             <input id="txtERPDataBaseNameForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group">
-                            <span class="input-group-addon" style="width: 110px">端口</span>
-                            <input id="txtERPDataBasePortForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <span class="input-group-addon" style="width: 110px">数据库账号</span>
-                            <input id="txtERPDataBaseUserNameForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group">
-                            <span class="input-group-addon" style="width: 110px">数据库密码</span>
-                            <input id="txtERPDataBasePasswordForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">
                         </div>
                     </td>
                     <td>
@@ -218,9 +222,17 @@
                         </div>
                     </td>
                     <td>
-                        <div class="input-group">
+                        <div class="input-group" id="divIsNewErpForTrunk">
                             <span class="input-group-addon" style="width: 110px">是否新工作流</span>
-                            <input id="txtERPIsNewErpForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">
+                            <%--<input id="txtERPIsNewErpForTrunk" type="text" class="form-control" placeholder="" style="width: 230px">--%>
+                            <%-- <input type="radio" name="rdIsNewErpForTrunk" id="rdIsNewErpForTrunk1" value="1" checked>是
+                            <input type="radio" name="rdIsNewErpForTrunk" id="rdIsNewErpForTrunk2" value="0">否--%>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="rdIsNewErpForTrunk" id="rdIsNewErpForTrunk1" value="1" checked>是
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="rdIsNewErpForTrunk" id="rdIsNewErpForTrunk2" value="0">否                                
+                            </label>
                         </div>
                     </td>
                 </tr>
@@ -229,7 +241,7 @@
                     <td style="float: right">
                         <button type="button" id="btnTestERPDBInfoForTrunk" class="btn btn-primary">数据库连接测试</button>
                         <button type="button" id="btnCreateForTrunk" class="btn btn-primary">生成</button>
-                        <button type="button" id="btnDownLoadForTrunk" class="btn btn-primary" style="display:none">下载</button>
+                        <button type="button" id="btnDownLoadForTrunk" class="btn btn-primary" style="display: none">下载</button>
                     </td>
                 </tr>
                 <tr style="height: 34px">
@@ -247,30 +259,30 @@
                     </td>
                     <td>
                         <div class="input-group">
-                            <span class="input-group-addon" style="width: 110px">数据库名称</span>
-                            <input id="txtERPDataBaseNameForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group">
                             <span class="input-group-addon" style="width: 110px">端口</span>
                             <input id="txtERPDataBasePortForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">
                         </div>
                     </td>
+                </tr>
+                <tr>
                     <td>
                         <div class="input-group">
                             <span class="input-group-addon" style="width: 110px">数据库账号</span>
                             <input id="txtERPDataBaseUserNameForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">
                         </div>
                     </td>
-                </tr>
-                <tr>
                     <td>
                         <div class="input-group">
                             <span class="input-group-addon" style="width: 110px">数据库密码</span>
                             <input id="txtERPDataBasePasswordForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 110px">数据库名称</span>
+                            <input id="txtERPDataBaseNameForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">
                         </div>
                     </td>
                     <td>
@@ -302,9 +314,15 @@
                         </div>
                     </td>
                     <td>
-                        <div class="input-group">
+                        <div class="input-group" id="divIsNewErpForBranch1">
                             <span class="input-group-addon" style="width: 110px">是否新工作流</span>
-                            <input id="txtERPIsNewErpForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">
+                            <%--<input id="txtERPIsNewErpForBranch1" type="text" class="form-control" placeholder="" style="width: 230px">--%>
+                             <label class="checkbox-inline">
+                                <input type="radio" name="rdIsNewErpForBranch" id="rdIsNewErpForBranch1" value="1" checked>是
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="rdIsNewErpForBranch" id="rdIsNewErpForBranch2" value="0">否                                
+                            </label>
                         </div>
                     </td>
                 </tr>
@@ -313,7 +331,7 @@
                     <td style="float: right">
                         <button type="button" id="btnTestERPDBInfoForBranch1" class="btn btn-primary">数据库连接测试</button>
                         <button type="button" id="btnCreateForBranch1" class="btn btn-primary">生成</button>
-                        <button type="button" id="btnDownLoadForBranch1" class="btn btn-primary" style="display:none">下载</button>
+                        <button type="button" id="btnDownLoadForBranch1" class="btn btn-primary" style="display: none">下载</button>
                     </td>
                 </tr>
             </table>

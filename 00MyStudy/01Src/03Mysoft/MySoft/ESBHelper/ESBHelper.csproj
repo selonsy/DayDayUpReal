@@ -71,7 +71,6 @@
     <Content Include="Assets\js\npm.js" />
     <Content Include="garbage\CommonTemp.js" />
     <Content Include="js\Common.js" />
-    <Content Include="js\login.js" />
     <Content Include="loginforms\choose-layout-assets\1.jpg" />
     <Content Include="loginforms\choose-layout-assets\2.jpg" />
     <Content Include="loginforms\choose-layout-assets\3.jpg" />
@@ -186,6 +185,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\ESBSiteEntity.cs" />
+    <Compile Include="Entity\ServerEntity.cs" />
+    <Compile Include="Entity\SiteType.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

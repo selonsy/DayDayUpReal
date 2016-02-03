@@ -12,7 +12,7 @@ var SiteType = {
 
 //初始化
 $(document).ready(function () {
-    //注册点击事件   
+    //测试按钮
     $("#btnTestEsbDBInfo").click(function () {
         checkDBConnection(SiteType.ESBSite);
     });
@@ -22,6 +22,11 @@ $(document).ready(function () {
     $("#btnTestERPDBInfoForBranch1").click(function () {
         checkDBConnection(SiteType.Branch1);
     });
+
+    //生成按钮
+    $("#btnCreateForESB").click(function () {
+        CreateSQL(SiteType.ESBSite);
+    });
     $("#btnCreateForTrunk").click(function () {
         CreateSQL(SiteType.Trunk);
     });
@@ -29,17 +34,28 @@ $(document).ready(function () {
         CreateSQL(SiteType.Branch1);
     });
 
-    //赋值测试
+    //快捷操作按钮
+    $("#btnFastTest").click(function () {
+        //CreateSQL(SiteType.Branch1);
+    });
+    $("#btnFastCreate").click(function () {
+        //CreateSQL(SiteType.Branch1);
+    });
+    $("#btnFastDownload").click(function () {
+        //CreateSQL(SiteType.Branch1);
+    });
+    $("#btnForZhuangBi").click(function () {
+        alert("咋地，逼都让你装完了，还特么想上天呐！");
+    });
+
+    //测试语句
     TestDataForCheckDBConnection();
 
+    //第三方控件初始化
     //// 初始化轮播
     //$(".start-slide").click(function () {
     //    $("#myCarousel").carousel('cycle');
     //});
-
-    $("#btnForZhuangBi").click(function () {
-        alert("咋地，逼都让你装完了，还特么想上天呐！");
-    });
 });
 
 //测试模块
@@ -52,28 +68,30 @@ function TestDataForCheckDBConnection() {
     $("#txtESBDataBasePassword").val('95938');
 
     //主站点
-    $("#txtERPDataBaseServerForTrunk").val('10.5.10.75\\SQL2005_SH');
-    $("#txtERPDataBaseNameForTrunk").val('dotnet_erp304_shshangshi');
-    $("#txtERPDataBasePortForTrunk").val('1433');
-    $("#txtERPDataBaseUserNameForTrunk").val('sa');
-    $("#txtERPDataBasePasswordForTrunk").val('Mysoft95938');
-    $("#txtERPProviderNameForTrunk").val('SHSS304');
-    $("#txtERPDisplayNameForTrunk").val('上海上实ERP304');
+    $("#txtERPDataBaseServer").val('10.5.10.75\\SQL2008R2_SZ');
+    $("#txtERPDataBasePort").val('1433');
+    $("#txtERPDataBaseUserName").val('sa');
+    $("#txtERPDataBasePassword").val('Mysoft95938');
+
+    $("#txtERPDataBaseNameForTrunk").val('erp302_szzb_hngj');
+    $("#txtERPProviderNameForTrunk").val('SZHNC302');
+    $("#txtERPDisplayNameForTrunk").val('深圳华南城ERP302');
     $("#txtERPIsNewErpForTrunk").val('1');
-    $("#txtERPSysSignForTrunk").val('shss304');
-    $("#txtERPDomainForTrunk").val('http://localhost:8001');
+    $('#divIsNewErpForTrunk input[name="rdIsNewErpForTrunk"][value="0"]').attr("checked", true);
+    $("#txtERPSysSignForTrunk").val('szhnc302');
+    $("#txtERPDomainForTrunk").val('http://localhost:17302');
 
     //辅站点1
-    $("#txtERPDataBaseServerForBranch1").val('10.5.10.75\\SQL2005_SH');
-    $("#txtERPDataBaseNameForBranch1").val('erp307sp4_shanghai_shss_销售费用');
+    $("#txtERPDataBaseServerForBranch1").val('10.5.10.75\\SQL2008R2_SZ');
+    $("#txtERPDataBaseNameForBranch1").val('sydczl202sp2_szzb_hngj');
     $("#txtERPDataBasePortForBranch1").val('1433');
     $("#txtERPDataBaseUserNameForBranch1").val('sa');
     $("#txtERPDataBasePasswordForBranch1").val('Mysoft95938');
-    $("#txtERPProviderNameForBranch1").val('SHSS307');
-    $("#txtERPDisplayNameForBranch1").val('上海上实ERP307');
-    $("#txtERPIsNewErpForBranch1").val('1');
-    $("#txtERPSysSignForBranch1").val('shss307');
-    $("#txtERPDomainForBranch1").val('http://localhost:8002');
+    $("#txtERPProviderNameForBranch1").val('SZHNC303');
+    $("#txtERPDisplayNameForBranch1").val('深圳华南城SYDC202');
+    $('#divIsNewErpForBranch1 input[name="rdIsNewErpForBranch"][value="0"]').attr("checked", true);
+    $("#txtERPSysSignForBranch1").val('szhnc303');
+    $("#txtERPDomainForBranch1").val('http://localhost:17303');
 }
 
 //+----------------------------------------------------------------------  
@@ -84,51 +102,160 @@ function TestDataForCheckDBConnection() {
 //| 创建人：沈金龙
 //| 创建时间：2016-1-22 11:13:36
 //+----------------------------------------------------------------------
-function CreateSQL(type) {
+function collectParamForCreateESBSQL() {
     var obj = {
+        createType:SiteType.ESBSite,
         dbEsbName: $("#txtESBDataBaseName").val(),
-        dbServer: type == SiteType.Trunk ? $("#txtERPDataBaseServerForTrunk").val() : $("#txtERPDataBaseServerForBranch1").val(),
-        dbName: type == SiteType.Trunk ? $("#txtERPDataBaseNameForTrunk").val() : $("#txtERPDataBaseNameForBranch1").val(),
-        dbPort: type == SiteType.Trunk ? $("#txtERPDataBasePortForTrunk").val() : $("#txtERPDataBasePortForBranch1").val(),
-        dbUserName: type == SiteType.Trunk ? $("#txtERPDataBaseUserNameForTrunk").val() : $("#txtERPDataBaseUserNameForBranch1").val(),
-        dbPassword: type == SiteType.Trunk ? $("#txtERPDataBasePasswordForTrunk").val() : $("#txtERPDataBasePasswordForBranch1").val(),
-        providerName: type == SiteType.Trunk ? $("#txtERPProviderNameForTrunk").val() : $("#txtERPProviderNameForBranch1").val(),
-        displayName: type == SiteType.Trunk ? $("#txtERPDisplayNameForTrunk").val() : $("#txtERPDisplayNameForBranch1").val(),
-        isNewErp: type == SiteType.Trunk ? $("#txtERPIsNewErpForTrunk").val() : $("#txtERPIsNewErpForBranch1").val(),
-        sysSign: type == SiteType.Trunk ? $("#txtERPSysSignForTrunk").val() : $("#txtERPSysSignForBranch1").val(),
-        dbDomain: type == SiteType.Trunk ? $("#txtERPDomainForTrunk").val() : $("#txtERPDomainForBranch1").val()
+        dbServer: $("#txtERPDataBaseServer").val(),
+        dbUserName: $("#txtERPDataBaseUserName").val(),
+        dbPassword: $("#txtERPDataBasePassword").val(),
+        dbPort: $("#txtERPDataBasePort").val(),
+
+        dbName1: $("#txtERPDataBaseNameForTrunk").val(),
+        providerName1: $("#txtERPProviderNameForTrunk").val(),
+        displayName1: $("#txtERPDisplayNameForTrunk").val(),
+        isNewErp1: $('input[name="rdIsNewErpForTrunk"]:checked').val(),
+        sysSign1: $("#txtERPSysSignForTrunk").val(),
+        dbDomain1: $("#txtERPDomainForTrunk").val(),
+
+        dbName2: $("#txtERPDataBaseNameForBranch1").val(),
+        providerName2: $("#txtERPProviderNameForBranch1").val(),
+        displayName2: $("#txtERPDisplayNameForBranch1").val(),
+        isNewErp2: $('input[name="rdIsNewErpForBranch"]:checked').val(),
+        sysSign2: $("#txtERPSysSignForBranch1").val(),
+        dbDomain2: $("#txtERPDomainForBranch1").val()
     };
+    //buuug:个人觉得，验证应该在这里处理。。。收集参数就得给出一个没有问题的结果，有问题就应该这时候提出来。。
 
-    if (!VerfiyInput(obj) == true) return;
+    //if (!VerfiyInput(obj) == true) return;
+    //alert(obj.isNewErp1+'   '+obj.isNewErp2);
+    return obj;
+}
 
-    var result = myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "POST", obj, false, CreateSQLAsyncCall);
 
-    if (result == "false")
-        alert(obj.displayName + "SQL语句生成失败！");
+function collectParamForCreateERPTrunkSQL() {
+    var obj = {
+        createType: SiteType.Trunk,
+        dbName1: $("#txtERPDataBaseNameForTrunk").val(),
+        dbName2: $("#txtERPDataBaseNameForBranch1").val(),               
+        sysSign1: $("#txtERPSysSignForTrunk").val(),
+        sysSign2: $("#txtERPSysSignForBranch1").val(),
+        isNewErp: $('input[name="rdIsNewErpForTrunk"]:checked').val()
+    };
+    //if (!VerfiyInput(obj) == true) return;
+    return obj;
+}
+
+function collectParamForCreateERPBranch1SQL() {
+    var obj = {
+        createType: SiteType.Branch1,
+        dbName1: $("#txtERPDataBaseNameForBranch1").val(),
+        dbName2: $("#txtERPDataBaseNameForTrunk").val(),
+        sysSign1: $("#txtERPSysSignForBranch1").val(),
+        sysSign2: $("#txtERPSysSignForTrunk").val(),
+        isNewErp: $('input[name="rdIsNewErpForBranch"]:checked').val()
+    };
+    //if (!VerfiyInput(obj) == true) return;
+    return obj;
+}
+
+function CreateSQL(type) {
+    var obj,result;
+    if (type == SiteType.ESBSite) {
+        obj = collectParamForCreateESBSQL();
+    }
+    else if (type == SiteType.Trunk) {
+        obj = collectParamForCreateERPTrunkSQL();
+    }
+    else if (type == SiteType.Branch1) {
+        obj = collectParamForCreateERPBranch1SQL();
+    }
+    
+    try {
+        result = myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "post", obj, false, CreateSQLAsyncCall);
+    }
+    catch (e) {
+        alert(e.message);
+    }
+
+    if (result == "false"||result=="")
+        alert("SQL语句生成失败！");
     if (result == "true") {
-        alert(obj.displayName + "SQL语句生成成功！");
-        //控制按钮显示
-        if (type == SiteType.Trunk) {
-            $("#btnCreateForTrunk").hide();
-            $("#btnDownLoadForTrunk").show();
-            //添加下载事件
-            $("#btnDownLoadForTrunk").click(function () {
-                alert("就不给下！你打我啊~~");
-            });
-        }
-        else {
-            $("#btnCreateForBranch1").hide();
-            $("#btnDownLoadForBranch1").show();
-            //添加下载事件
-            $("#btnDownLoadForBranch1").click(function () {
-                alert("就不给下！你打我啊~~");
-            });
-        }
+        alert("SQL语句生成成功！");
+        btnDisplayControl(type);
+    }
+}
+
+function btnDisplayControl(type) {
+    //控制按钮显示
+    if (type == SiteType.ESBSite) {               
+        $("#btnCreateForESB").hide();
+        $("#btnDownLoadForESB").show();
+        //添加下载事件
+        $("#btnDownLoadForESB").click(function () {
+            alert("就不给下！你打我啊~~");
+        });
+    }
+    else if (type == SiteType.Trunk) {
+        $("#btnCreateForTrunk").hide();
+        $("#btnDownLoadForTrunk").show();
+        //添加下载事件
+        $("#btnDownLoadForTrunk").click(function () {
+            alert("就不给下！你打我啊~~");
+        });
+    }
+    else {
+        $("#btnCreateForBranch1").hide();
+        $("#btnDownLoadForBranch1").show();
+        //添加下载事件
+        $("#btnDownLoadForBranch1").click(function () {
+            alert("就不给下！你打我啊~~");
+        });
     }
 }
 
 function CreateSQLAsyncCall(data, textStatus) {
     //alert(data+"+"+textStatus);
+}
+
+function collectParamForCreateSQLTest(type) {
+    var obj;
+    var esbName = $("#txtESBDataBaseName");
+    var dbServer,dbUserName, dbPassword,dbPort;
+    var dbName,dbDomain, providerName, displayName, sysSign, isNewErp;
+    
+    if (type == SiteType.ESBSite) {
+        dbServer = $("#txtESBDataBaseServer").val();
+        dbName = $("#txtESBDataBaseName").val();
+        dbPort = $("#txtESBDataBasePort").val();
+        dbUserName = $("#txtESBDataBaseUser").val();
+        dbPassword = $("#txtESBDataBasePassword").val();
+    } else if (type == SiteType.Trunk) {
+        dbName1 = $("#txtERPDataBaseNameForTrunk").val();
+        isNewErp = $('#divIsNewErpForTrunk input[name="rdIsNewErpForTrunk"]:checked').val();
+    } else if (type == SiteType.Branch1) {
+        dbServer = $("#txtERPDataBaseServerForBranch1").val();
+        dbName = $("#txtERPDataBaseNameForBranch1").val();
+        dbPort = $("#txtERPDataBasePortForBranch1").val();
+        dbUserName = $("#txtERPDataBaseUserNameForBranch1").val();
+        dbPassword = $("#txtERPDataBasePasswordForBranch1").val();
+    } else {
+
+    }
+
+    var obj = {
+        dbServer: dbServer,
+        dbName: dbName,
+        dbPort: dbPort,
+        dbUserName: dbUserName,
+        dbPassword: dbPassword
+    };
+
+    //buuug:是否需要在此处验证参数对象obj
+
+    return obj;
+
+
 }
 
 //+----------------------------------------------------------------------  
@@ -149,22 +276,21 @@ function collectParamForDBConnectionTest(type) {
         dbPort = $("#txtESBDataBasePort").val();
         dbUserName = $("#txtESBDataBaseUser").val();
         dbPassword = $("#txtESBDataBasePassword").val();
-    } else if (type == SiteType.Trunk) {
-        dbServer = $("#txtERPDataBaseServerForTrunk").val();
-        dbName = $("#txtERPDataBaseNameForTrunk").val();
-        dbPort = $("#txtERPDataBasePortForTrunk").val();
-        dbUserName = $("#txtERPDataBaseUserNameForTrunk").val();
-        dbPassword = $("#txtERPDataBasePasswordForTrunk").val();
-    } else if (type == SiteType.Branch1) {
-        dbServer = $("#txtERPDataBaseServerForBranch1").val();
-        dbName = $("#txtERPDataBaseNameForBranch1").val();
-        dbPort = $("#txtERPDataBasePortForBranch1").val();
-        dbUserName = $("#txtERPDataBaseUserNameForBranch1").val();
-        dbPassword = $("#txtERPDataBasePasswordForBranch1").val();
-    } else {
-
     }
-
+    else {
+        dbServer = $("#txtERPDataBaseServer").val();        
+        dbPort = $("#txtERPDataBasePort").val();
+        dbUserName = $("#txtERPDataBaseUserName").val();
+        dbPassword = $("#txtERPDataBasePassword").val();      
+        if (type == SiteType.Trunk) {
+            dbName = $("#txtERPDataBaseNameForTrunk").val();
+        }
+        else if (type == SiteType.Branch1) {
+           dbName = $("#txtERPDataBaseNameForBranch1").val();
+        }
+        else {
+        }
+    }
     var obj = {
         dbServer: dbServer,
         dbName: dbName,
@@ -172,8 +298,6 @@ function collectParamForDBConnectionTest(type) {
         dbUserName: dbUserName,
         dbPassword: dbPassword
     };
-
-    //buuug:是否需要在此处验证参数对象obj
 
     return obj;
 }

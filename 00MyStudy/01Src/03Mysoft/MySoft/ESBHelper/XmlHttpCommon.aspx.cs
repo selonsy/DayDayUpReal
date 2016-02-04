@@ -9,6 +9,8 @@ using System.Text;
 using System.IO;
 using System.Web.Services;
 using ESBHelper.Entity;
+using Devin;
+
 namespace ESBHelper
 {
     public partial class XmlHttpCommon : System.Web.UI.Page
@@ -50,6 +52,18 @@ namespace ESBHelper
             Response.Write(strReturn);
             //Response.Flush();
             Response.End();
+        }
+
+        public string FastCreateSQL() 
+        {
+            //生成压缩文件
+            //ZipHelper.MyZipFile(@"D:\公用文件\ESBHelper\CompletedSql", @"D:\公用文件\ESBHelper\CompletedZip\aaa.zip");        
+            return "";
+        }
+
+        public string FastTestConnection() 
+        {
+            return "";
         }
 
         /// <summary>
@@ -112,100 +126,6 @@ namespace ESBHelper
             }
             return result;
         }
-
-        /// <summary>
-        /// 生成格式化后的SQL文件
-        /// </summary>
-        /// <returns></returns>
-        //private string CreateSQL1()
-        //{
-        //    string dbEsbName, dbServer, dbName, dbPort, dbUserName, dbPassword, dbDomain;
-        //    string providerName, displayName, isNewErp, sysSign;
-        //    string result = "true";
-
-        //    dbEsbName = Request.Form["dbEsbName"].ToString();
-        //    dbServer = Request.Form["dbServer"].ToString();
-        //    dbName = Request.Form["dbName"].ToString();
-        //    dbPort = Request.Form["dbPort"].ToString();
-        //    dbUserName = Request.Form["dbUserName"].ToString();
-        //    dbPassword = Request.Form["dbPassword"].ToString();
-        //    dbDomain = Request.Form["dbDomain"].ToString();
-        //    providerName = Request.Form["providerName"].ToString();
-        //    displayName = Request.Form["displayName"].ToString();
-        //    isNewErp = Request.Form["isNewErp"].ToString();
-        //    sysSign = Request.Form["sysSign"].ToString();
-
-        //    StringBuilder MyStringBuilder = new StringBuilder();
-        //    try
-        //    {
-        //        StreamReader sr = new StreamReader(origiFilePath, Encoding.Default);
-        //        String line;
-        //        while ((line = sr.ReadLine()) != null)
-        //        {
-        //            if (line.IndexOf("%ESBDataBaseName%") != -1)
-        //            {
-        //                line = line.Replace("%ESBDataBaseName%", dbEsbName);
-        //            }
-        //            if (line.IndexOf("%ProviderName%") != -1)
-        //            {
-        //                line = line.Replace("%ProviderName%", providerName);
-        //            }
-        //            if (line.IndexOf("%DisplayName%") != -1)
-        //            {
-        //                line = line.Replace("%DisplayName%", displayName);
-        //            }
-        //            if (line.IndexOf("%DataBaseName%") != -1)
-        //            {
-        //                line = line.Replace("%DataBaseName%", dbName);
-        //            }
-        //            if (line.IndexOf("%SysSign%") != -1)
-        //            {
-        //                line = line.Replace("%SysSign%", sysSign);
-        //            }
-        //            if (line.IndexOf("%IsNewErp%") != -1)
-        //            {
-        //                line = line.Replace("%IsNewErp%", isNewErp);
-        //            }
-        //            if (line.IndexOf("%Domain%") != -1)
-        //            {
-        //                line = line.Replace("%Domain%", dbDomain);
-        //            }
-        //            if (line.IndexOf("%DataBaseServer%") != -1)
-        //            {
-        //                line = line.Replace("%DataBaseServer%", dbServer);
-        //            }
-        //            if (line.IndexOf("%DataBaseUserName%") != -1)
-        //            {
-        //                line = line.Replace("%DataBaseUserName%", dbUserName);
-        //            }
-        //            if (line.IndexOf("%DataBasePassword%") != -1)
-        //            {
-        //                line = line.Replace("%DataBasePassword%", dbPassword);
-        //            }
-        //            if (line.IndexOf("%Port%") != -1)
-        //            {
-        //                line = line.Replace("%Port%", dbPort);
-        //            }
-        //            MyStringBuilder.AppendLine(line);
-        //        }
-        //        //文件名称
-        //        string targetFileName = displayName + "-" + DateTime.Now.ToString("D") + ".sql";
-        //        //创建文件
-        //        FileStream fs = new FileStream(targetFilePath + targetFileName, FileMode.Create);
-        //        //获得字节数组
-        //        byte[] data = System.Text.Encoding.Default.GetBytes(MyStringBuilder.ToString());
-        //        //写入文件
-        //        fs.Write(data, 0, data.Length);
-        //        //清空缓冲区、关闭流
-        //        fs.Flush();
-        //        fs.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result = "false";
-        //    }
-        //    return result;
-        //}
 
         /// <summary>
         /// 获取格式化后的字符串
@@ -351,6 +271,8 @@ namespace ESBHelper
                 //清空缓冲区、关闭流
                 fs.Flush();
                 fs.Close();
+
+                ZipHelper.MyZipFile(@"D:\公用文件\ESBHelper\CompletedSql", @"D:\公用文件\ESBHelper\CompletedZip");        
             }
             catch (Exception ex)
             {

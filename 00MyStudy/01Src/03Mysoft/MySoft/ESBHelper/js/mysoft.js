@@ -47,16 +47,44 @@ $(document).ready(function () {
     $("#btnForZhuangBi").click(function () {
         alert("咋地，逼都让你装完了，还特么想上天呐！");
     });
-
-    //测试语句
-    TestDataForCheckDBConnection();
-
+    $("#btnExample").click(function () {
+        //测试语句
+        TestDataForCheckDBConnection();
+        $("#btnExample").hide();
+        $("#btnClear").show();
+    });
+    $("#btnClear").click(function () {
+        $("input[type='text']").val('');
+        $('input[name="rdIsNewErpForTrunk"][value="1"]').attr("checked", true);
+        $('input[name="rdIsNewErpForBranch"][value="1"]').attr("checked", true);
+        $("#btnClear").hide();
+        $("#btnExample").show();
+    });
+      
     //第三方控件初始化
     //// 初始化轮播
     //$(".start-slide").click(function () {
     //    $("#myCarousel").carousel('cycle');
     //});
+
+    //onkeyup事件绑定
+    bindOnKeyUp();
 });
+
+function bindOnKeyUp() {
+    $("#txtERPDataBaseServer").keyup(function () {
+        $("#txtERPDataBaseServerForBranch1").val($("#txtERPDataBaseServer").val());
+    });
+    $("#txtERPDataBasePort").keyup(function () {
+        $("#txtERPDataBasePortForBranch1").val($("#txtERPDataBasePort").val());
+    });
+    $("#txtERPDataBaseUserName").keyup(function () {
+        $("#txtERPDataBaseUserNameForBranch1").val($("#txtERPDataBaseUserName").val());
+    });
+    $("#txtERPDataBasePassword").keyup(function () {
+        $("#txtERPDataBasePasswordForBranch1").val($("#txtERPDataBasePassword").val());
+    });
+}
 
 //测试模块
 function TestDataForCheckDBConnection() {
@@ -77,7 +105,7 @@ function TestDataForCheckDBConnection() {
     $("#txtERPProviderNameForTrunk").val('SZHNC302');
     $("#txtERPDisplayNameForTrunk").val('深圳华南城ERP302');
     $("#txtERPIsNewErpForTrunk").val('1');
-    $('#divIsNewErpForTrunk input[name="rdIsNewErpForTrunk"][value="0"]').attr("checked", true);
+    $('input[name="rdIsNewErpForTrunk"][value="0"]').attr("checked", true);
     $("#txtERPSysSignForTrunk").val('szhnc302');
     $("#txtERPDomainForTrunk").val('http://localhost:17302');
 
@@ -89,7 +117,7 @@ function TestDataForCheckDBConnection() {
     $("#txtERPDataBasePasswordForBranch1").val('Mysoft95938');
     $("#txtERPProviderNameForBranch1").val('SZHNC303');
     $("#txtERPDisplayNameForBranch1").val('深圳华南城SYDC202');
-    $('#divIsNewErpForBranch1 input[name="rdIsNewErpForBranch"][value="0"]').attr("checked", true);
+    $('input[name="rdIsNewErpForBranch"][value="0"]').attr("checked", true);
     $("#txtERPSysSignForBranch1").val('szhnc303');
     $("#txtERPDomainForBranch1").val('http://localhost:17303');
 }

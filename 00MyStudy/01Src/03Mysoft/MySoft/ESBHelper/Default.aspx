@@ -89,7 +89,9 @@
                         <button type="button" id="btnFastTest" class="btn btn-primary">一键测试</button>
                         <button type="button" id="btnFastCreate" class="btn btn-primary">一键生成</button>
                         <button type="button" id="btnFastDownload" class="btn btn-primary">一键下载</button>
-                        <button type="button" id="btnForZhuangBi" class="btn btn-primary">一键装逼</button>
+                        <button type="button" id="btnForZhuangBi" class="btn btn-primary" style="display:none">一键装逼</button>
+                        <button type="button" id="btnExample" class="btn btn-primary">查看示例</button>
+                        <button type="button" id="btnClear" class="btn btn-primary" style="display:none">一键清空</button>
                     </td>
                     <td></td>
                 </tr>

@@ -40,8 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MyHelper">
-      <HintPath>..\..\..\..\00Bin\MyHelper.dll</HintPath>
+    <Reference Include="MyHelper, Version=9.5.2.701, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\02Lib\MyHelper.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -162,7 +163,6 @@
     <Content Include="loginforms\form-3\index.html" />
     <Content Include="loginforms\index.html" />
     <Content Include="Default.aspx" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="images\1.jpg" />
     <Content Include="images\3.jpg" />
     <Content Include="images\2.jpg" />
@@ -175,7 +175,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="XmlHttpCommon.aspx" />
-    <Content Include="A我的待办事项.js" />
+    <Content Include="我的待办.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">

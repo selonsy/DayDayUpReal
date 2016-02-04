@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Devin
 {
-    class FileHelper
+    class ExceptionHelper
     {
 
     }

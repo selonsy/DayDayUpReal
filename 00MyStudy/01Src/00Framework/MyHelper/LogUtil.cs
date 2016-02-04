@@ -9,10 +9,9 @@ namespace Devin
     public static class LogUtil
     {
         /// <summary>
-        /// 配置默认路径o 
-        /// </summary>
-        //private static string defaultPath = System.Configuration.ConfigurationManager.AppSettings["logPath"];
-        private static string defaultPath = "C:\\02MyWorkspace\\MyLog";
+        /// 配置默认路径 
+        /// </summary>        
+        private static string defaultPath = SelonsyBase.LogPath;
         #region Exception异常日志
 
         /// <summary>
@@ -156,8 +155,12 @@ namespace Devin
         private static string CreateErrorMeg(Exception ex)
         {
             string result = string.Empty;
-            result += ex.Message + "\r\n";
-            result += ex.StackTrace + "\r\n";
+            result += "\r\n[GetType]" + ex.GetType() + "\r\n";
+            result += "[Message]"+ex.Message + "\r\n";
+            result += "[Source]" + ex.Source + "\r\n";
+            result += "[TargetSite]" + ex.TargetSite + "\r\n";
+            result += "[Data]" + ex.Data + "\r\n";                       
+            result += "[StackTrace]\r\n" + ex.StackTrace + "\r\n";
             return result;
         }
 

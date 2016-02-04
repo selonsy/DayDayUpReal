@@ -21,7 +21,7 @@ namespace Devin
         /// <summary>
         /// 默认数据库连接字符串
         /// </summary>
-        private static string connectionString = System.Configuration.ConfigurationManager.AppSettings["ConStr"].ToString().Trim();
+        private static string connectionString = SelonsyBase.ConnStr;
         
         /// <summary>
         /// Hashtable to store cached parameters

@@ -21,9 +21,13 @@ namespace Devin
 
             ZipFile.ExtractToDirectory(zipPath, extractPath);
         }
-
-        //压缩文件
-        public static void MyZipFile(string sourceDirectoryName, string destinationArchiveFileName)
+        
+        /// <summary>
+        /// 压缩文件，将指定文件夹中的文件压缩成一个指定文件名的压缩文件
+        /// </summary>
+        /// <param name="sourceDirectoryName">源目标文件夹</param>
+        /// <param name="destinationArchiveFileName">目标压缩文件</param>
+        public static void Zip(string sourceDirectoryName, string destinationArchiveFileName)
         {
             try
             {
@@ -34,9 +38,13 @@ namespace Devin
                 LogUtil.WriteError(ex);
             }
         }
-
-        //解压文件
-        public static void UnZipFile(string sourceArchiveFileName, string destinationDirectoryName)
+        
+        /// <summary>
+        /// 解压文件，将指定的压缩文件解压到指定的文件夹
+        /// </summary>
+        /// <param name="sourceArchiveFileName">源压缩文件</param>
+        /// <param name="destinationDirectoryName">目标文件夹</param>
+        public static void UnZip(string sourceArchiveFileName, string destinationDirectoryName)
         {            
             try
             {
@@ -46,6 +54,22 @@ namespace Devin
             {
                 LogUtil.WriteError(ex);
             }
+        }
+
+        /// <summary>
+        /// 添加文件到指定的压缩文件中，待实现
+        /// </summary>
+        public static void AddFileToZip() 
+        {
+            
+        }
+
+        /// <summary>
+        /// 从压缩文件中获取指定名称的文件，待实现
+        /// </summary>
+        public static void GetFileFormZip() 
+        { 
+            
         }
 
         ///// <summary>

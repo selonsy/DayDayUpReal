@@ -9,9 +9,9 @@ namespace Devin
     public static class SelonsyBase
     {
         //日志文件路径
-        public static string LogPath = @"D:\公用文件\MyLog";
+        public static string LogDefaultPath = @"D:\公用文件\MyLog";
 
         //数据库链接
-        public static string ConnStr = System.Configuration.ConfigurationManager.AppSettings["ConnStr"].ToString().Trim();
+        public static string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["ConnStr"].ToString().Trim();
     }
 }

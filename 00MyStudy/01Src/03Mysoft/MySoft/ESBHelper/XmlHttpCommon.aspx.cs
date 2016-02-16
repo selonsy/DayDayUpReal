@@ -282,9 +282,7 @@ namespace ESBHelper
                 fs.Write(data, 0, data.Length);
                 //清空缓冲区、关闭流
                 fs.Flush();
-                fs.Close();
-
-                ZipHelper.MyZipFile(@"D:\公用文件\ESBHelper\CompletedSql", @"D:\公用文件\ESBHelper\CompletedZip\深圳华南城ESB数据库更新包.zip");        
+                fs.Close();                
             }
             catch (Exception ex)
             {
@@ -350,5 +348,6 @@ namespace ESBHelper
             }
             return true;            
         }
+
     }
 }

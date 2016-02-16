@@ -67,7 +67,6 @@
     <Compile Include="Temp\Diff.cs" />
     <Compile Include="Temp\Encrypt.cs" />
     <Compile Include="Temp\EnumHelper.cs" />
-    <Compile Include="Temp\Exception.cs" />
     <Compile Include="Temp\Fetch.cs" />
     <Compile Include="Temp\FileWatchHelper.cs" />
     <Compile Include="Temp\GeoHelper.cs" />
@@ -103,9 +102,6 @@
     <Compile Include="Temp\ValidateCode\ValidateCode_Style9.cs" />
     <Compile Include="Temp\WcfServiceProxy.cs" />
     <Compile Include="ZipHelper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Temp\上传图片.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-﻿//版本号：1.0.0.0 2016-1-31 15:42:34   
+﻿//版本号：1.0.0.0 2016-2-16 15:38:59 
 
 //+----------------------------------------------------------------------  
 //| 功能：公用ajax调用函数(jQuery)
@@ -95,7 +95,10 @@ function myAjaxXml() {
 //| 创建时间：2016-1-29 17:26:42
 //+---------------------------------------------------------------------
 function myAjaxError(xmlHttpRequest, textStatus, errorThrown){
-    alert("这是ajax调用失败的错误处理函数！");
+    var msg = "status:" + xmlHttpRequest.status + "\n";
+    msg += "Info:" + xmlHttpRequest.statusText + "\n";
+    msg += "ResponseText:" + xmlHttpRequest.responseText + "\n";
+    alert(msg);
 }
 
 

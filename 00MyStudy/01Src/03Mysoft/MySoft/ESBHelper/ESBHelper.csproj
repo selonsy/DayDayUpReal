@@ -40,10 +40,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MyHelper, Version=9.5.2.701, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\02Lib\MyHelper.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,6 +170,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebMethodHttpCommon.aspx" />
     <Content Include="XmlHttpCommon.aspx" />
     <Content Include="我的待办.txt" />
   </ItemGroup>
@@ -196,6 +193,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebMethodHttpCommon.aspx.cs">
+      <DependentUpon>WebMethodHttpCommon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMethodHttpCommon.aspx.designer.cs">
+      <DependentUpon>WebMethodHttpCommon.aspx</DependentUpon>
+    </Compile>
     <Compile Include="XmlHttpCommon.aspx.cs">
       <DependentUpon>XmlHttpCommon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -329,7 +333,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\00Framework\MyHelper\AAAAA.csproj">
+      <Project>{eddfd138-9d78-42bf-a0f9-b8615ab1cdec}</Project>
+      <Name>AAAAA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

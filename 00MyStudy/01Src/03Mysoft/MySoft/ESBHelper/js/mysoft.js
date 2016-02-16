@@ -36,13 +36,34 @@ $(document).ready(function () {
 
     //快捷操作按钮
     $("#btnFastTest").click(function () {
-        //CreateSQL(SiteType.Branch1);
+        var result = false;
+        result = checkDBConnectionForFast(SiteType.ESBSite);
+        result = checkDBConnectionForFast(SiteType.Trunk);
+        result = checkDBConnectionForFast(SiteType.Branch1);
+        if (result == true) {
+            alert("数据库连接测试成功！");
+        }
+        else {
+            alert("数据库连接测试失败！");
+        }
     });
-    $("#btnFastCreate").click(function () {
-        //CreateSQL(SiteType.Branch1);
+
+    $("#btnFastCreate").click(function () {        
+        var result = false;
+        result = CreateSQLForFast(SiteType.ESBSite);
+        result = CreateSQLForFast(SiteType.Trunk);
+        result = CreateSQLForFast(SiteType.Branch1);
+        if (result == true) {
+            alert("SQL语句生成成功！");
+            //生成压缩文件
+            myAjaxWeb("WebMethodHttpCommon.aspx", "ZipFileAfterCreateSQL");
+        }
+        else {
+            alert("SQL语句生成失败！");
+        }
     });
     $("#btnFastDownload").click(function () {
-        //CreateSQL(SiteType.Branch1);
+        DownLoadSQLFast();
     });
     $("#btnForZhuangBi").click(function () {
         alert("咋地，逼都让你装完了，还特么想上天呐！");
@@ -123,6 +144,25 @@ function TestDataForCheckDBConnection() {
 }
 
 //+----------------------------------------------------------------------  
+//| 功能：下载
+//| 说明：
+//| 参数：
+//| 返回值：
+//| 创建人：沈金龙
+//| 创建时间：2016-1-22 11:13:36
+//+----------------------------------------------------------------------
+
+//一键下载按钮实现
+function DownLoadSQLFast() {
+    var result = myAjaxWeb("WebMethodHttpCommon.aspx", "DownLoadSQLFast", "", CreateSQLAsyncCall);
+}
+
+//下载标准代码的压缩文件
+function DownLoadCodeFase() {
+
+}
+
+//+----------------------------------------------------------------------  
 //| 功能：生成SQL语句 
 //| 说明：
 //| 参数：
@@ -130,6 +170,62 @@ function TestDataForCheckDBConnection() {
 //| 创建人：沈金龙
 //| 创建时间：2016-1-22 11:13:36
 //+----------------------------------------------------------------------
+
+//生成SQL语句
+function CreateSQL(type) {
+    var obj, result;
+    if (type == SiteType.ESBSite) {
+        obj = collectParamForCreateESBSQL();
+    }
+    else if (type == SiteType.Trunk) {
+        obj = collectParamForCreateERPTrunkSQL();
+    }
+    else if (type == SiteType.Branch1) {
+        obj = collectParamForCreateERPBranch1SQL();
+    }
+
+    try {
+        result = myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "post", obj, false, CreateSQLAsyncCall);
+    }
+    catch (e) {
+        alert(e.message);
+    }
+
+    if (result == "false" || result == "")
+        alert("SQL语句生成失败！");
+    if (result == "true") {
+        alert("SQL语句生成成功！");
+        btnDisplayControl(type);
+    }
+}
+
+function CreateSQLForFast(type) {
+    var obj;
+    var result = false;
+    if (type == SiteType.ESBSite) {
+        obj = collectParamForCreateESBSQL();
+    }
+    else if (type == SiteType.Trunk) {
+        obj = collectParamForCreateERPTrunkSQL();
+    }
+    else if (type == SiteType.Branch1) {
+        obj = collectParamForCreateERPBranch1SQL();
+    }
+
+    try {
+        result = myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "post", obj, false, CreateSQLAsyncCall);
+    }
+    catch (e) {
+        alert(e.message);
+    }
+
+    if (result == "true") {
+        result = true;        
+    }
+    return result;
+}
+
+//收集参数
 function collectParamForCreateESBSQL() {
     var obj = {
         createType:SiteType.ESBSite,
@@ -159,8 +255,6 @@ function collectParamForCreateESBSQL() {
     //alert(obj.isNewErp1+'   '+obj.isNewErp2);
     return obj;
 }
-
-
 function collectParamForCreateERPTrunkSQL() {
     var obj = {
         createType: SiteType.Trunk,
@@ -173,7 +267,6 @@ function collectParamForCreateERPTrunkSQL() {
     //if (!VerfiyInput(obj) == true) return;
     return obj;
 }
-
 function collectParamForCreateERPBranch1SQL() {
     var obj = {
         createType: SiteType.Branch1,
@@ -187,33 +280,7 @@ function collectParamForCreateERPBranch1SQL() {
     return obj;
 }
 
-function CreateSQL(type) {
-    var obj,result;
-    if (type == SiteType.ESBSite) {
-        obj = collectParamForCreateESBSQL();
-    }
-    else if (type == SiteType.Trunk) {
-        obj = collectParamForCreateERPTrunkSQL();
-    }
-    else if (type == SiteType.Branch1) {
-        obj = collectParamForCreateERPBranch1SQL();
-    }
-    
-    try {
-        result = myAjax("XmlHttpCommon.aspx?ywtype=CreateSQL", "post", obj, false, CreateSQLAsyncCall);
-    }
-    catch (e) {
-        alert(e.message);
-    }
-
-    if (result == "false"||result=="")
-        alert("SQL语句生成失败！");
-    if (result == "true") {
-        alert("SQL语句生成成功！");
-        btnDisplayControl(type);
-    }
-}
-
+//控制按钮显示
 function btnDisplayControl(type) {
     //控制按钮显示
     if (type == SiteType.ESBSite) {               
@@ -242,49 +309,11 @@ function btnDisplayControl(type) {
     }
 }
 
+//生成SQL语句异步调用
 function CreateSQLAsyncCall(data, textStatus) {
     //alert(data+"+"+textStatus);
 }
 
-function collectParamForCreateSQLTest(type) {
-    var obj;
-    var esbName = $("#txtESBDataBaseName");
-    var dbServer,dbUserName, dbPassword,dbPort;
-    var dbName,dbDomain, providerName, displayName, sysSign, isNewErp;
-    
-    if (type == SiteType.ESBSite) {
-        dbServer = $("#txtESBDataBaseServer").val();
-        dbName = $("#txtESBDataBaseName").val();
-        dbPort = $("#txtESBDataBasePort").val();
-        dbUserName = $("#txtESBDataBaseUser").val();
-        dbPassword = $("#txtESBDataBasePassword").val();
-    } else if (type == SiteType.Trunk) {
-        dbName1 = $("#txtERPDataBaseNameForTrunk").val();
-        isNewErp = $('#divIsNewErpForTrunk input[name="rdIsNewErpForTrunk"]:checked').val();
-    } else if (type == SiteType.Branch1) {
-        dbServer = $("#txtERPDataBaseServerForBranch1").val();
-        dbName = $("#txtERPDataBaseNameForBranch1").val();
-        dbPort = $("#txtERPDataBasePortForBranch1").val();
-        dbUserName = $("#txtERPDataBaseUserNameForBranch1").val();
-        dbPassword = $("#txtERPDataBasePasswordForBranch1").val();
-    } else {
-
-    }
-
-    var obj = {
-        dbServer: dbServer,
-        dbName: dbName,
-        dbPort: dbPort,
-        dbUserName: dbUserName,
-        dbPassword: dbPassword
-    };
-
-    //buuug:是否需要在此处验证参数对象obj
-
-    return obj;
-
-
-}
 
 //+----------------------------------------------------------------------  
 //| 功能：测试数据库链接公用函数   
@@ -295,6 +324,7 @@ function collectParamForCreateSQLTest(type) {
 //| 创建时间：2016-1-22 11:13:36
 //+----------------------------------------------------------------------
 
+//收集参数
 function collectParamForDBConnectionTest(type) {
     var obj;
     var dbServer, dbName, dbPort, dbUserName, dbPassword;
@@ -330,6 +360,7 @@ function collectParamForDBConnectionTest(type) {
     return obj;
 }
 
+//测试链接
 function checkDBConnection(type) {
 
     var obj = collectParamForDBConnectionTest(type);
@@ -348,6 +379,29 @@ function checkDBConnection(type) {
                 alert("数据库连接测试成功！");
         }
     });
+};
+
+function checkDBConnectionForFast(type) {
+
+    var result = false;
+    var obj = collectParamForDBConnectionTest(type);
+
+    if (!VerfiyInput(obj) == true) return;
+    
+    $.ajax({
+        type: "POST",
+        url: "XmlHttpCommon.aspx?ywtype=CheckDBConnection",
+        data: obj,
+        async:false,
+        dataType: "text",
+        success: function (data) {
+            if (!data || data == "false")
+                result = false;
+            if (data == "true")
+                result = true;
+        }
+    });
+    return result;
 };
 
 /*--------------------shenjl Add On 2016-1-29 15:42:47 公用函数 Begin --------------------*/

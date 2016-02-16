@@ -7,11 +7,12 @@ namespace Devin
     /// 日志类
     /// </summary>
     public static class LogUtil
-    {
+    {        
         /// <summary>
         /// 配置默认路径 
-        /// </summary>        
-        private static string defaultPath = SelonsyBase.LogPath;
+        /// </summary>                
+        //private static string defaultPath = @"D:\公用文件\MyLog";
+       
         #region Exception异常日志
 
         /// <summary>
@@ -20,7 +21,7 @@ namespace Devin
         /// <param name="ex">异常类</param>
         public static void WriteError(Exception ex)
         {
-            WriteError(ex, defaultPath);
+            WriteError(ex, SelonsyBase.LogDefaultPath);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Devin
         /// <param name="logType">日志类型</param>
         public static void WriteLog(string msg, LogType logType)
         {
-            WriteLog(msg, defaultPath, logType);
+            WriteLog(msg, SelonsyBase.LogDefaultPath, logType);
         }
 
         /// <summary>
@@ -172,8 +173,14 @@ namespace Devin
         private static string CreateFileName(LogType logType)
         {
             string result = DateTime.Now.ToString("yyyy-MM-dd");
-            if (logType != LogType.Info)
-                result = logType.ToString() + result + ".log";
+            if (logType == LogType.Info)
+            {
+                result = logType.ToString() + "-" + result + ".txt";
+            }
+            else if (logType == LogType.Error)
+            {
+                result = logType.ToString() + "-" + result + ".log";
+            }
             return result;
         }
 

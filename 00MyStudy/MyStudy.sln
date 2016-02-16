@@ -11,8 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02Selonsy", "02Selonsy", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00Framework", "00Framework", "{8268B503-74A1-40CC-ABD8-C7B54AE6C476}"
 	ProjectSection(SolutionItems) = preProject
-		我的待办.txt = 我的待办.txt
-		我的编码规范.txt = 我的编码规范.txt
+		01Src\00Framework\我的待办.txt = 01Src\00Framework\我的待办.txt
+		01Src\00Framework\我的编码规范.txt = 01Src\00Framework\我的编码规范.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.BLL", "01Src\00Framework\Framework.BLL\Framework.BLL.csproj", "{290B5D69-973B-444E-A956-555534090CD7}"

@@ -16,9 +16,9 @@ namespace ESBHelper
     public partial class XmlHttpCommon : System.Web.UI.Page
     {
         //原始文件路径
-        string origiFilePathForESB = @"D:\公用文件\ESBHelper\ESBSiteSql.txt";
-        string origiFilePathForERP = @"D:\公用文件\ESBHelper\ERPSiteSql.txt";
-        string origiFilePathForERP_1 = @"D:\公用文件\ESBHelper\NewERPFuncAndSP.txt";
+        string origiFilePathForESB = @"D:\公用文件\ESBHelper\BasicFile\SQL\ESBSiteSql.txt";
+        string origiFilePathForERP = @"D:\公用文件\ESBHelper\BasicFile\SQL\ERPSiteSql.txt";
+        string origiFilePathForERP_1 = @"D:\公用文件\ESBHelper\BasicFile\SQL\NewERPFuncAndSPSql.txt";
         //目标文件夹路径
         string targetFilePath = @"D:\公用文件\ESBHelper\CompletedSql\";
 
@@ -158,24 +158,28 @@ namespace ESBHelper
         public bool CreateSqlForESB()
         {
             string dbEsbName,dbServer,dbPort,dbUserName,dbPassword;
-            string dbName1,dbDomain1,providerName1, displayName1, isNewErp1, sysSign1;
-            string dbName2,dbDomain2,providerName2, displayName2, isNewErp2, sysSign2;
+            string dbName1, dbDomain1, dbPort1, providerName1, displayName1, isNewErp1, sysSign1;
+            string dbName2, dbDomain2, dbPort2, providerName2, displayName2, isNewErp2, sysSign2;
 
             dbEsbName = Request.Form["dbEsbName"].ToString();
-            dbServer = Request.Form["dbServer"].ToString();            
+            dbServer = Request.Form["dbServer"].ToString();
             dbPort = Request.Form["dbPort"].ToString();
             dbUserName = Request.Form["dbUserName"].ToString();
             dbPassword = Request.Form["dbPassword"].ToString();
 
             dbName1 = Request.Form["dbName1"].ToString();
-            dbDomain1 = Request.Form["dbDomain1"].ToString();
+            var tempArray1 = Request.Form["dbDomain1"].ToString().Split(':');
+            dbDomain1 = tempArray1[1].Substring(2);
+            dbPort1 = tempArray1[2];
             providerName1 = Request.Form["providerName1"].ToString();
             displayName1 = Request.Form["displayName1"].ToString();
             isNewErp1 = Request.Form["isNewErp1"].ToString();
             sysSign1 = Request.Form["sysSign1"].ToString();
 
             dbName2 = Request.Form["dbName2"].ToString();
-            dbDomain2 = Request.Form["dbDomain2"].ToString();
+            var tempArray2 = Request.Form["dbDomain2"].ToString().Split(':');
+            dbDomain2 = tempArray2[1].Substring(2);
+            dbPort2 = tempArray2[2];
             providerName2 = Request.Form["providerName2"].ToString();
             displayName2 = Request.Form["displayName2"].ToString();
             isNewErp2 = Request.Form["isNewErp2"].ToString();
@@ -217,6 +221,10 @@ namespace ESBHelper
                     {
                         line = line.Replace("%dbDomain1%", dbDomain1);
                     }
+                    if (line.IndexOf("%port1%") != -1)
+                    {
+                        line = line.Replace("%port1%", dbPort1);
+                    }
                     if (line.IndexOf("%providerName1%") != -1)
                     {
                         line = line.Replace("%providerName1%", providerName1);
@@ -241,6 +249,10 @@ namespace ESBHelper
                     if (line.IndexOf("%dbDomain2%") != -1)
                     {
                         line = line.Replace("%dbDomain2%", dbDomain2);
+                    }
+                    if (line.IndexOf("%port2%") != -1)
+                    {
+                        line = line.Replace("%port2%", dbPort2);
                     }
                     if (line.IndexOf("%providerName2%") != -1)
                     {
@@ -272,7 +284,7 @@ namespace ESBHelper
                 fs.Flush();
                 fs.Close();
 
-                ZipHelper.MyZipFile(@"D:\公用文件\ESBHelper\CompletedSql", @"D:\公用文件\ESBHelper\CompletedZip");        
+                ZipHelper.MyZipFile(@"D:\公用文件\ESBHelper\CompletedSql", @"D:\公用文件\ESBHelper\CompletedZip\深圳华南城ESB数据库更新包.zip");        
             }
             catch (Exception ex)
             {

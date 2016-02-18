@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.Globalization;
 
 namespace Devin
 {
@@ -406,53 +407,104 @@ namespace Devin
     /// <summary>
     /// 明源注册表Sa密码
     /// </summary>
-    public class MysoftEncrption 
+    public static class MysoftEncrption 
     {
         /// <summary>
-        /// 明源的解密函数，如：6.707可以解密为95938
+        /// 明源的加密函数
         /// </summary>
-        /// <param name="inStr"></param>
-        /// <returns></returns>
-        //public string funcDeCode(string inStr)
-        //{
-        //    string strBuff;
-        //    int intCode;
-        //    int i;
+        /// <param name="inStr">待加密的字符串</param>
+        /// <returns>加密后的字符串</returns>
+        /// <example>
+        /// 95938-6.707
+        /// </example>
+        public static string MyEncode(string instr) 
+        {
+            string StrBuff = null;
+            int IntLen = 0;
+            int IntCode = 0;
+            int IntCode1 = 0;
+            int IntCode2 = 0;
+            int IntCode3 = 0;
+            int i = 0;
 
-        //    strBuff = "";
+            IntLen = instr.Trim().Length;
 
-        //    var intLen = inStr.Trim(' ').Length;
+            IntCode1 = IntLen % 3;
+            IntCode2 = IntLen % 9;
+            IntCode3 = IntLen % 5;
+            IntCode = IntCode1 + IntCode3;
 
-        //    var intCode1 = intLen % 3;
-        //    var intCode2 = intLen % 9;
-        //    var intCode3 = intLen % 5;
-            
-        //    if (intLen / 2.0 == (int)Math.Floor(intLen / 2.0))
-        //    {
-        //        intCode = intCode2 + intCode3;
-        //    }
-        //    else
-        //    {
-        //        intCode = intCode1 + intCode3;
-        //    }
+            for (i = 1; i <= IntLen; i++)
+            {
+                try
+                {
+                    System.Text.ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
+                    int intAsciiCode = (int)asciiEncoding.GetBytes(instr.Substring(IntLen - i, 1))[0];
+                    StrBuff = StrBuff + Convert.ToChar(intAsciiCode - IntCode);                                   
+                    if (IntCode == IntCode1 + IntCode3)
+                    {
+                        IntCode = IntCode2 + IntCode3;
+                    }
+                    else
+                    {
+                        IntCode = IntCode1 + IntCode3;
+                    }
+                }
+                catch (Exception ex) {
+                    LogHelper.WriteError(ex);
+                }
+            }
+            return StrBuff;            
+        }
 
-        //    for (i = 1; i <= intLen; i++)
-        //    {
+        /// <summary>
+        /// 明源的解密函数
+        /// </summary>
+        /// <param name="inStr">待解密的字符串</param>
+        /// <returns>解密后的字符串</returns>
+        /// <example>
+        /// 6.707-95938
+        /// </example>
+        public static string MyDecode(string inStr)
+        {
+            string strBuff;
+            int intCode;
+            int i;
 
-        //        strBuff = strBuff + ((char)(Convert.ToInt32(inStr[intLen + 1 - i - 1]) + intCode)).ToString(CultureInfo.InvariantCulture);
+            strBuff = "";
 
-        //        if (intCode == intCode1 + intCode3)
-        //        {
-        //            intCode = intCode2 + intCode3;
-        //        }
-        //        else
-        //        {
-        //            intCode = intCode1 + intCode3;
-        //        }
-        //    }
+            var intLen = inStr.Trim(' ').Length;
 
-        //    return strBuff + new String(' ', inStr.Length - intLen);
-        //}
+            var intCode1 = intLen % 3;
+            var intCode2 = intLen % 9;
+            var intCode3 = intLen % 5;
+
+            if (intLen / 2.0 == (int)Math.Floor(intLen / 2.0))
+            {
+                intCode = intCode2 + intCode3;
+            }
+            else
+            {
+                intCode = intCode1 + intCode3;
+            }
+
+            for (i = 1; i <= intLen; i++)
+            {
+
+                strBuff = strBuff + ((char)(Convert.ToInt32(inStr[intLen + 1 - i - 1]) + intCode)).ToString(CultureInfo.InvariantCulture);
+
+                if (intCode == intCode1 + intCode3)
+                {
+                    intCode = intCode2 + intCode3;
+                }
+                else
+                {
+                    intCode = intCode1 + intCode3;
+                }
+            }
+
+            return strBuff + new String(' ', inStr.Length - intLen);
+        }
 
     }
 

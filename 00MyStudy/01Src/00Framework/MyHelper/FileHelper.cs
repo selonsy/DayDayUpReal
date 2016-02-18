@@ -51,7 +51,7 @@ namespace Devin
             }
             catch(Exception ex)
             {
-                LogUtil.WriteError(ex);
+                LogHelper.WriteError(ex);
             }
             finally
             {

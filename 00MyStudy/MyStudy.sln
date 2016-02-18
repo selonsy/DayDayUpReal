@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.DAL", "01Src\00Fr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Utility", "01Src\00Framework\Framework.Utility\Framework.Utility.csproj", "{9F519EF8-800F-40CB-9545-9AEADF0F387D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAAAA", "01Src\00Framework\MyHelper\AAAAA.csproj", "{EDDFD138-9D78-42BF-A0F9-B8615AB1CDEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHelper", "01Src\00Framework\MyHelper\MyHelper.csproj", "{EDDFD138-9D78-42BF-A0F9-B8615AB1CDEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAssets", "01Src\00Framework\MyAssets\MyAssets.csproj", "{F3B21BC0-0529-4EE1-AE43-A5C46B6AD33A}"
 EndProject

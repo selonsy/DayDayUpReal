@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWeb", "01Src\02Selonsy\My
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHelper.Tests", "01Src\00Framework\MyHelper.Tests\MyHelper.Tests.csproj", "{9496EAF7-39CB-49BD-8085-895E85170825}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHelper_LowLevel", "01Src\00Framework\MyHelper_LowLevel\MyHelper_LowLevel.csproj", "{DE812C8D-709D-4F30-A73B-2C0F794F5F28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{9496EAF7-39CB-49BD-8085-895E85170825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9496EAF7-39CB-49BD-8085-895E85170825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9496EAF7-39CB-49BD-8085-895E85170825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE812C8D-709D-4F30-A73B-2C0F794F5F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE812C8D-709D-4F30-A73B-2C0F794F5F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE812C8D-709D-4F30-A73B-2C0F794F5F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE812C8D-709D-4F30-A73B-2C0F794F5F28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,5 +130,6 @@ Global
 		{EDDFD138-9D78-42BF-A0F9-B8615AB1CDEC} = {8268B503-74A1-40CC-ABD8-C7B54AE6C476}
 		{F3B21BC0-0529-4EE1-AE43-A5C46B6AD33A} = {8268B503-74A1-40CC-ABD8-C7B54AE6C476}
 		{9496EAF7-39CB-49BD-8085-895E85170825} = {8268B503-74A1-40CC-ABD8-C7B54AE6C476}
+		{DE812C8D-709D-4F30-A73B-2C0F794F5F28} = {8268B503-74A1-40CC-ABD8-C7B54AE6C476}
 	EndGlobalSection
 EndGlobal

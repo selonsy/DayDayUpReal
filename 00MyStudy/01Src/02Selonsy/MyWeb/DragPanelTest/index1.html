@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TaskManager Sort Test</title>
+<script src="../Assets/js/jquery-1.12.0.min.js"></script>
+<style type="text/css">
+.SortItem {
+	width: 230px;
+	height: 55px;
+	background-color: #0078ca;
+	position: absolute;
+	cursor: pointer;
+	text-align: center;
+	color: #fff;
+	font: 35px Arial, Helvetica, sans-serif;		
+}
+#SortContaint {
+	position: absolute;
+	width: 230px;
+	left: 30px;
+	height: 560px;
+	border: solid;
+}
+</style>
+
+</head>
+<body>
+
+<div id="SortContaint">
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>
+	<div class="SortItem"></div>	
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+		SortDivHandler.Initialize();
+		if (typeof(document.onselectstart) != "undefined") {
+			// IE    
+			document.onselectstart = new Function("return false");
+		} else {
+			// firefox  
+			document.onmousedown = new Function("return false");
+			document.onmouseup = new Function("return true");
+		}		
+	});
+	var SortDivHandler = {
+		CurrentLocationX: 0,   //当前的横坐标
+		CurrentLocationY: 0,   //当前的纵坐标
+		CurrentSortFlag: 0,	  //
+		CurrentSortDiv: null,   //当前活动的DIV
+		CurrentSortMove: 0,   //
+		//初始化	
+		Initialize: function() {
+			var isStart = false;
+			var isLeftButtonDown = false;   //左键是否按下
+			var sortItemCount = 10;
+			//赋值，定位
+			for (var i = 0; i < $(".SortItem").length; i++) {
+				var floorCount = Math.ceil((i + 1) / sortItemCount);
+				$($(".SortItem")[i]).attr("id", i);
+				$($(".SortItem")[i]).html(i + 1);
+				if ((i + 1) <= sortItemCount) {
+					$($(".SortItem")[i]).animate({
+						top: 30 + i * 26 + (i - 1) * 30 + "px",
+						left: "0px"
+					}, 200 + i * 100);
+				} else if ((i + 1) > 3) {
+					var itemIndex = (i) % 3;
+					$($(".SortItem")[i]).animate({
+						top: 30 + itemIndex * 200 + (itemIndex - 1) * 30 + "px",
+						//left: (floorCount - 1) * 120 + 30 * (floorCount - 1) + 30
+						left:"0px"
+					}, 300 + i * 100);
+				}
+			}
+			var isDrag = true;
+			$(".SortItem").mousedown(function(e) {
+				var SortTarget = $(this);
+				SortDivHandler.CurrentSortMove = 0;
+				SortDivHandler.CurrentSortDiv = $(this);
+				isDrag = true;
+				$(".SortItem").css("z-index", 1);
+				SortDivHandler.CurrentSortDiv.css("z-index", -1).css("opacity", 0.8);
+				SortDivHandler.CurrentLocationX = SortTarget.offset().left;
+				SortDivHandler.CurrentLocationY = SortTarget.offset().top;
+				SortTarget.attr("drag", 1);
+				SortTarget.css("position", "absolute");
+				SortTarget.css("cursor", "pointer");
+				//alert(SortDivHandler.CurrentLocationX+','+SortDivHandler.CurrentLocationY);
+				var currentTarget = SortTarget;
+				var currentDisX = e.pageX - $(this).offset().left;  //
+				var currentDisY = e.pageY - $(this).offset().top;
+				//alert(currentDisX+','+currentDisY);
+				$(document).mousemove(function(event) {
+					if ($(currentTarget).attr("drag") == 0 || SortDivHandler.CurrentSortMove == 1) return;
+					var currentX = event.clientX;
+					var currentY = event.clientY;
+					//alert(currentX+','+currentY);
+					var cursorX = event.pageX - currentDisX; // $(this).offset().left;  
+					var cursorY = event.pageY - currentDisY; //-$(this).offset().top; 
+					//alert(cursorX+','+cursorY);
+					// $(currentTarget)
+					$(currentTarget).css("top", cursorY - 30 + "px").css("left", cursorX - 8 + "px");
+					isStart = true;
+
+				});
+				$(document).mouseup(function() {
+					//  if(isDrag==false)return;
+					$(currentTarget).attr("drag", 0);
+
+				});
+				isLeftButtonDown = true;
+			});
+			$(".SortItem").mousemove(function() {
+				//if($(this).attr('id')!=0)alert('hehe');
+				if (isStart == false) return;
+				if (SortDivHandler.CurrentSortFlag == 0) {
+					if ($(this).attr("id") == SortDivHandler.CurrentSortDiv.attr("id")) {
+						return;
+					} else {
+						if (SortDivHandler.CurrentSortMove == 1) return;
+						SortDivHandler.CurrentSortMove = 1;
+						var targetX = $(this).offset().left;
+						var targetY = $(this).offset().top;
+						//alert(isLeftButtonDown);
+						//if(isLeftButtonDown != true){
+							SortDivHandler.CurrentSortDiv.stop(true).animate({
+								left: targetX - 30 + "px",
+								top: targetY - 8 + "px"
+							}, 500, function() {
+								$(this).css("opacity", 1);
+							});
+							$(this).stop(true).animate({
+								left: SortDivHandler.CurrentLocationX - 30 + "px",
+								top: SortDivHandler.CurrentLocationY - 8 + "px"
+							}, 300, function() {
+
+							});
+							isDrag = false;
+						// }
+						// else{
+						// 	SortDivHandler.CurrentSortDiv.animate({
+						// 		left: targetX - 30 + "px",
+						// 		top: targetY - 8 + "px"
+						// 	}, 500, function() {
+						// 		//$(this).css("opacity", 1);
+						// 	});
+						// 	$(this).animate({
+						// 		left: SortDivHandler.CurrentLocationX - 30 + "px",
+						// 		top: SortDivHandler.CurrentLocationY - 8 + "px"
+						// 	}, 300, function() {
+
+						// 	});
+						// }						
+					}
+				}
+			});
+			$(".SortItem").mouseup(function() {
+				//alert(SortDivHandler.CurrentLocationX+','+SortDivHandler.CurrentLocationY);
+				if (isDrag == false) return;
+				SortDivHandler.CurrentSortMove = 1;				
+				SortDivHandler.CurrentSortDiv.stop(true).animate({
+					left: SortDivHandler.CurrentLocationX - 8 + "px",
+					top: SortDivHandler.CurrentLocationY - 30 + "px"
+				}, 500, function() {
+					SortDivHandler.CurrentSortDiv.css("z-index", -1).css("opacity", 1);
+				});
+				isLeftButtonDown = false;
+			});
+		}
+	}
+</script>
+
+</body>
+</html>

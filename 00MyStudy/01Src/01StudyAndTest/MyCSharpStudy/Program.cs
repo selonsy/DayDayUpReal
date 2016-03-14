@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyCSharpStudy
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -245,4 +245,26 @@ namespace MyCSharpStudy
 
         #endregion
     }
+
+
+    public class MyTest<T, V>
+        where T : Program, IComparable
+        where V : Program
+    {
+
+    }
+
+    public class MyTest1<T, V>
+        where T : Program, new()
+        where V : Program
+    {
+
+    }
+
+    public class MyTest2<T, V>
+        where T : class
+        where V : struct
+    {
+
+    }    
 }

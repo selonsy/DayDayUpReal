@@ -39,15 +39,6 @@
             alert(decodeURI(username2));
             alert(decodeURIComponent(username3));
         }
-        //var s = {
-        //    obj1,
-        //    obj2
-        //}
-        function niming() {
-            var s;
-            s.wode = "你好";
-            alert(s.wode);
-        }
 
     </script>
     

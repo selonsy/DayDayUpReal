@@ -5,10 +5,228 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 using System.Globalization;
+using System.Web.Security;
 
 namespace Devin
 {
-    #region DES加密详解
+    /// <summary>
+    /// DES加密，需自定义KEY值，仅保存加密后的字符串
+    /// </summary>
+    public abstract class EncrptionHelper
+    {
+        #region DES
+        //示例:
+        //加密：EncryptDES("要加密的字符串", "azjmerbv");
+        //解密：DecryptDES("要解密的字符串", "azjmerbv");  
+
+        #region Keys
+        //默认密钥向量        
+        private static byte[] Keys = { 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF };
+        #endregion
+
+        /// DES加密字符串
+        /// <summary>        
+        /// DES加密字符串        
+        /// </summary>        
+        /// <param name="encryptString">待加密的字符串</param>       
+        /// <param name="encryptKey">加密密钥,要求为8位</param>        
+        /// <returns>加密成功返回加密后的字符串，失败返回源串</returns>        
+        public static string EncryptDES(string encryptString, string encryptKey)
+        {
+            try
+            {
+                byte[] rgbKey = Encoding.UTF8.GetBytes(encryptKey.Substring(0, 8));
+                byte[] rgbIV = Keys;
+                byte[] inputByteArray = Encoding.UTF8.GetBytes(encryptString);
+                DESCryptoServiceProvider dCSP = new DESCryptoServiceProvider();
+                MemoryStream mStream = new MemoryStream();
+                CryptoStream cStream = new CryptoStream(mStream, dCSP.CreateEncryptor(rgbKey, rgbIV), CryptoStreamMode.Write);
+                cStream.Write(inputByteArray, 0, inputByteArray.Length);
+                cStream.FlushFinalBlock();
+                return Convert.ToBase64String(mStream.ToArray());
+            }
+            catch
+            {
+                return encryptString;
+            }
+        }
+        /// DES解密字符串
+        /// <summary>        
+        /// DES解密字符串        
+        /// </summary>        
+        /// <param name="decryptString">待解密的字符串</param>        
+        /// <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param>        
+        /// <returns>解密成功返回解密后的字符串，失败返源串</returns>        
+        public static string DecryptDES(string decryptString, string decryptKey)
+        {
+            try
+            {
+                byte[] rgbKey = Encoding.UTF8.GetBytes(decryptKey);
+                byte[] rgbIV = Keys;
+                byte[] inputByteArray = Convert.FromBase64String(decryptString);
+                DESCryptoServiceProvider DCSP = new DESCryptoServiceProvider();
+                MemoryStream mStream = new MemoryStream();
+                CryptoStream cStream = new CryptoStream(mStream, DCSP.CreateDecryptor(rgbKey, rgbIV), CryptoStreamMode.Write);
+                cStream.Write(inputByteArray, 0, inputByteArray.Length);
+                cStream.FlushFinalBlock();
+                return Encoding.UTF8.GetString(mStream.ToArray());
+            }
+            catch { return decryptString; }
+        }
+
+        #endregion
+
+        #region MD5
+
+        /// MD5加密字符串
+        /// <summary>
+        /// MD5加密字符串
+        /// </summary>
+        /// <param name="encryptString"></param>
+        /// <returns></returns>
+        public static string EncryptMD5(string encryptString)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] data = md5.ComputeHash(Encoding.Default.GetBytes(encryptString));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sb.Append(data[i].ToString("x2"));
+            }
+            return sb.ToString();                       
+        }
+        public static string EncryptMD5_1(string encryptString)
+        {
+            return FormsAuthentication.HashPasswordForStoringInConfigFile(encryptString, "md5");
+        }
+        public static string EncryptMD5_2(string encryptString)
+        {
+            byte[] result = Encoding.Default.GetBytes(encryptString);
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] output = md5.ComputeHash(result);
+            return BitConverter.ToString(output).Replace("-", "");
+        }
+
+        /// MD5解密字符串
+        /// <summary>
+        /// MD5解密字符串
+        /// </summary>
+        /// <param name="encryptString"></param>
+        /// <returns></returns>
+        public static string DecryptMD5(string encryptString)
+        {
+            return "你在逗我么，你解一个试试？（手动鄙视脸）";
+        }
+
+        #endregion
+
+        #region Mysoft
+        /// <summary>
+        /// 明源的加密函数
+        /// </summary>
+        /// <param name="inStr">待加密的字符串</param>
+        /// <returns>加密后的字符串</returns>
+        /// <example>
+        /// 95938-6.707
+        /// </example>
+        public static string MyEncode(string instr)
+        {
+            string StrBuff = null;
+            int IntLen = 0;
+            int IntCode = 0;
+            int IntCode1 = 0;
+            int IntCode2 = 0;
+            int IntCode3 = 0;
+            int i = 0;
+
+            IntLen = instr.Trim().Length;
+
+            IntCode1 = IntLen % 3;
+            IntCode2 = IntLen % 9;
+            IntCode3 = IntLen % 5;
+            IntCode = IntCode1 + IntCode3;
+
+            for (i = 1; i <= IntLen; i++)
+            {
+                try
+                {
+                    System.Text.ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
+                    int intAsciiCode = (int)asciiEncoding.GetBytes(instr.Substring(IntLen - i, 1))[0];
+                    StrBuff = StrBuff + Convert.ToChar(intAsciiCode - IntCode);
+                    if (IntCode == IntCode1 + IntCode3)
+                    {
+                        IntCode = IntCode2 + IntCode3;
+                    }
+                    else
+                    {
+                        IntCode = IntCode1 + IntCode3;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.WriteError(ex);
+                }
+            }
+            return StrBuff;
+        }
+        /// <summary>
+        /// 明源的解密函数
+        /// </summary>
+        /// <param name="inStr">待解密的字符串</param>
+        /// <returns>解密后的字符串</returns>
+        /// <example>
+        /// 6.707-95938
+        /// </example>
+        public static string MyDecode(string inStr)
+        {
+            string strBuff;
+            int intCode;
+            int i;
+
+            strBuff = "";
+
+            var intLen = inStr.Trim(' ').Length;
+
+            var intCode1 = intLen % 3;
+            var intCode2 = intLen % 9;
+            var intCode3 = intLen % 5;
+
+            if (intLen / 2.0 == (int)Math.Floor(intLen / 2.0))
+            {
+                intCode = intCode2 + intCode3;
+            }
+            else
+            {
+                intCode = intCode1 + intCode3;
+            }
+
+            for (i = 1; i <= intLen; i++)
+            {
+
+                strBuff = strBuff + ((char)(Convert.ToInt32(inStr[intLen + 1 - i - 1]) + intCode)).ToString(CultureInfo.InvariantCulture);
+
+                if (intCode == intCode1 + intCode3)
+                {
+                    intCode = intCode2 + intCode3;
+                }
+                else
+                {
+                    intCode = intCode1 + intCode3;
+                }
+            }
+
+            return strBuff + new String(' ', inStr.Length - intLen);
+        }
+
+        #endregion
+
+        #region RSA
+
+        #endregion
+    }
+
+
+    #region DES加密详解_测试 
 
     /// <summary>
     /// DES实体类，仅用于DESHelper的返回
@@ -314,198 +532,4 @@ namespace Devin
     }
 
     #endregion
-
-    /// <summary>
-    /// DES加密，需自定义KEY值，仅保存加密后的字符串
-    /// </summary>
-    public abstract class EncrptionHelper
-    {
-        //示例:
-        //加密：EncryptDES("要加密的字符串", "azjmerbv");
-        //解密：DecryptDES("要解密的字符串", "azjmerbv");  
-
-        #region Keys
-        //默认密钥向量        
-        private static byte[] Keys = { 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF };
-        #endregion
-
-        /// DES加密字符串
-        /// <summary>        
-        /// DES加密字符串        
-        /// </summary>        
-        /// <param name="encryptString">待加密的字符串</param>       
-        /// <param name="encryptKey">加密密钥,要求为8位</param>        
-        /// <returns>加密成功返回加密后的字符串，失败返回源串</returns>        
-        public static string EncryptDES(string encryptString, string encryptKey)
-        {
-            try
-            {
-                byte[] rgbKey = Encoding.UTF8.GetBytes(encryptKey.Substring(0, 8));
-                byte[] rgbIV = Keys;
-                byte[] inputByteArray = Encoding.UTF8.GetBytes(encryptString);
-                DESCryptoServiceProvider dCSP = new DESCryptoServiceProvider();
-                MemoryStream mStream = new MemoryStream();
-                CryptoStream cStream = new CryptoStream(mStream, dCSP.CreateEncryptor(rgbKey, rgbIV), CryptoStreamMode.Write);
-                cStream.Write(inputByteArray, 0, inputByteArray.Length);
-                cStream.FlushFinalBlock();
-                return Convert.ToBase64String(mStream.ToArray());
-            }
-            catch
-            {
-                return encryptString;
-            }
-        }
-
-        /// DES解密字符串
-        /// <summary>        
-        /// DES解密字符串        
-        /// </summary>        
-        /// <param name="decryptString">待解密的字符串</param>        
-        /// <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param>        
-        /// <returns>解密成功返回解密后的字符串，失败返源串</returns>        
-        public static string DecryptDES(string decryptString, string decryptKey)
-        {
-            try
-            {
-                byte[] rgbKey = Encoding.UTF8.GetBytes(decryptKey);
-                byte[] rgbIV = Keys;
-                byte[] inputByteArray = Convert.FromBase64String(decryptString);
-                DESCryptoServiceProvider DCSP = new DESCryptoServiceProvider();
-                MemoryStream mStream = new MemoryStream();
-                CryptoStream cStream = new CryptoStream(mStream, DCSP.CreateDecryptor(rgbKey, rgbIV), CryptoStreamMode.Write);
-                cStream.Write(inputByteArray, 0, inputByteArray.Length);
-                cStream.FlushFinalBlock();
-                return Encoding.UTF8.GetString(mStream.ToArray());
-            }
-            catch { return decryptString; }
-        }
-
-        /// MD5加密字符串
-        /// <summary>
-        /// MD5加密字符串
-        /// </summary>
-        /// <param name="encryptString"></param>
-        /// <returns></returns>
-        public static string EncryptMD5(string encryptString)
-        {
-            return "";
-        }
-
-        /// MD5解密字符串
-        /// <summary>
-        /// MD5解密字符串
-        /// </summary>
-        /// <param name="encryptString"></param>
-        /// <returns></returns>
-        public static string DecryptMD5(string encryptString)
-        {
-            return "";
-        }
-
-    }
-
-    /// <summary>
-    /// 明源注册表Sa密码
-    /// </summary>
-    public static class MysoftEncrption 
-    {
-        /// <summary>
-        /// 明源的加密函数
-        /// </summary>
-        /// <param name="inStr">待加密的字符串</param>
-        /// <returns>加密后的字符串</returns>
-        /// <example>
-        /// 95938-6.707
-        /// </example>
-        public static string MyEncode(string instr) 
-        {
-            string StrBuff = null;
-            int IntLen = 0;
-            int IntCode = 0;
-            int IntCode1 = 0;
-            int IntCode2 = 0;
-            int IntCode3 = 0;
-            int i = 0;
-
-            IntLen = instr.Trim().Length;
-
-            IntCode1 = IntLen % 3;
-            IntCode2 = IntLen % 9;
-            IntCode3 = IntLen % 5;
-            IntCode = IntCode1 + IntCode3;
-
-            for (i = 1; i <= IntLen; i++)
-            {
-                try
-                {
-                    System.Text.ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
-                    int intAsciiCode = (int)asciiEncoding.GetBytes(instr.Substring(IntLen - i, 1))[0];
-                    StrBuff = StrBuff + Convert.ToChar(intAsciiCode - IntCode);                                   
-                    if (IntCode == IntCode1 + IntCode3)
-                    {
-                        IntCode = IntCode2 + IntCode3;
-                    }
-                    else
-                    {
-                        IntCode = IntCode1 + IntCode3;
-                    }
-                }
-                catch (Exception ex) {
-                    LogHelper.WriteError(ex);
-                }
-            }
-            return StrBuff;            
-        }
-
-        /// <summary>
-        /// 明源的解密函数
-        /// </summary>
-        /// <param name="inStr">待解密的字符串</param>
-        /// <returns>解密后的字符串</returns>
-        /// <example>
-        /// 6.707-95938
-        /// </example>
-        public static string MyDecode(string inStr)
-        {
-            string strBuff;
-            int intCode;
-            int i;
-
-            strBuff = "";
-
-            var intLen = inStr.Trim(' ').Length;
-
-            var intCode1 = intLen % 3;
-            var intCode2 = intLen % 9;
-            var intCode3 = intLen % 5;
-
-            if (intLen / 2.0 == (int)Math.Floor(intLen / 2.0))
-            {
-                intCode = intCode2 + intCode3;
-            }
-            else
-            {
-                intCode = intCode1 + intCode3;
-            }
-
-            for (i = 1; i <= intLen; i++)
-            {
-
-                strBuff = strBuff + ((char)(Convert.ToInt32(inStr[intLen + 1 - i - 1]) + intCode)).ToString(CultureInfo.InvariantCulture);
-
-                if (intCode == intCode1 + intCode3)
-                {
-                    intCode = intCode2 + intCode3;
-                }
-                else
-                {
-                    intCode = intCode1 + intCode3;
-                }
-            }
-
-            return strBuff + new String(' ', inStr.Length - intLen);
-        }
-
-    }
-
 }

@@ -11,7 +11,7 @@ namespace Devin.Tests
         {
             string a = "Mysoft95938";
             string expected = "50626qclpvJ";
-            string actual = MysoftEncrption.MyEncode(a);
+            string actual = EncrptionHelper.MyEncode(a);
             Assert.AreEqual(expected, actual);
         }
 
@@ -20,7 +20,7 @@ namespace Devin.Tests
         {
             string a = "6.707";
             string expected = "95938";
-            string actual = MysoftEncrption.MyDecode(a);
+            string actual = EncrptionHelper.MyDecode(a);
             Assert.AreEqual(expected, actual);
         }
     }

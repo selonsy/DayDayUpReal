@@ -11,7 +11,7 @@ namespace Devin
         /// <summary>
         /// 配置默认路径 
         /// </summary>                
-        //private static string defaultPath = @"D:\公用文件\MyLog";
+        private static string defaultPath = @"D:\公用文件\MyLog";
        
         #region Exception异常日志
 
@@ -21,7 +21,7 @@ namespace Devin
         /// <param name="ex">异常类</param>
         public static void WriteError(Exception ex)
         {
-            WriteError(ex, @"D:\公用文件\MyLog");
+            WriteError(ex, defaultPath);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Devin
         /// <param name="logType">日志类型</param>
         public static void WriteLog(string msg, LogType logType)
         {
-            WriteLog(msg, @"D:\公用文件\MyLog", logType);
+            WriteLog(msg, defaultPath, logType);
         }
 
         /// <summary>

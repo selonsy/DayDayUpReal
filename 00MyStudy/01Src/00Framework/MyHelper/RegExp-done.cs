@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace GMS.Framework.Utility
+namespace Devin
 {
     /// <summary>
     /// 常用正则匹配类
@@ -87,12 +87,22 @@ namespace GMS.Framework.Utility
             return !Regex.IsMatch(text1, text2, RegexOptions.IgnoreCase);
         }
 
+        /// <summary>
+        /// 是否为Unicode编码
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static bool IsUnicode(string s)
         {
             string text1 = @"^[\u4E00-\u9FA5\uE815-\uFA29]+$";
             return Regex.IsMatch(s, text1);
         }
 
+        /// <summary>
+        /// 是否URL
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static bool IsUrl(string s)
         {
             string text1 = @"^(http|https|ftp|rtsp|mms):(\/\/|\\\\)[A-Za-z0-9%\-_@]+\.[A-Za-z0-9%\-_@]+[A-Za-z0-9\.\/=\?%\-&_~`@:\+!;]*$";
@@ -128,4 +138,3 @@ namespace GMS.Framework.Utility
         }
     }
 }
-

@@ -69,7 +69,7 @@ namespace GMS.Framework.Utility
 
         public static void Save(HttpCookie cookie, int expiresHours = 0)
         {
-            string domain = Fetch.ServerDomain;
+            string domain = "";// Fetch.ServerDomain;
             string urlHost = HttpContext.Current.Request.Url.Host.ToLower();
             if (domain != urlHost)
                 cookie.Domain = domain;

@@ -1,36 +1,31 @@
-﻿using System;
-using System.Configuration;
-using System.Web;
+﻿using System.Web;
 using System.Collections.Generic;
 
-namespace GMS.Framework.Utility
+namespace Devin
 {
-	/// <summary>
-    /// Fetch 的摘要说明。
-	/// </summary>
-	public class Fetch
-	{
-		/// <summary>
-		/// 获取Url后面的值
-		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
+    public class Fetch
+    {
+        /// <summary>
+        /// 获取Url后面的值
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static string Get(string name)
-		{
-			string text1 = HttpContext.Current.Request.QueryString[name];
-			return ((text1 == null) ? "" : text1.Trim());
-		}
+        {
+            string text1 = HttpContext.Current.Request.QueryString[name];
+            return ((text1 == null) ? "" : text1.Trim());
+        }
 
-		/// <summary>
-		/// 获取表单Post过来的值
-		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
+        /// <summary>
+        /// 获取表单Post过来的值
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static string Post(string name)
-		{
-			string text1 = HttpContext.Current.Request.Form[name];
-			return ((text1 == null) ? "" : text1.Trim());
-		}
+        {
+            string text1 = HttpContext.Current.Request.Form[name];
+            return ((text1 == null) ? "" : text1.Trim());
+        }
 
         /// <summary>
         /// 获取Url后面的值，如.....aspx?productid=2将获取到"2"
@@ -45,11 +40,11 @@ namespace GMS.Framework.Utility
         }
 
         /// <summary>
-        /// 获取表单Post过来的值，如表单checkboxlist传ids:2,3,5过来，将是int[]{2,3,4}
+        /// 获取表单Post过来的值，如表单checkboxlist传ids:2,3,5过来，将是int[]{2,3,5}
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static int[] GetIds(string name) 
+        public static int[] GetIds(string name)
         {
             var ids = Post(name);
             List<int> result = new List<int>();
@@ -84,12 +79,12 @@ namespace GMS.Framework.Utility
         /// 获取当前页面的Url
         /// </summary>
         public static string CurrentUrl
-		{
-			get
-			{
-				return HttpContext.Current.Request.Url.ToString();
-			}
-		}
+        {
+            get
+            {
+                return HttpContext.Current.Request.Url.ToString();
+            }
+        }
 
         /// <summary>
         /// 获取当前页面的主域，如www.GMS.com主域是GMS.com
@@ -136,5 +131,5 @@ namespace GMS.Framework.Utility
             }
         }
 
-	}
+    }
 }

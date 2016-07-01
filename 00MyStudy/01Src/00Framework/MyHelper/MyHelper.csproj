@@ -52,16 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AAAAA.cs" />
-    <Compile Include="AAAAA_TEST.cs" />
-    <Compile Include="EncrptionHelper.cs" />
-    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="Base-done.cs" />
+    <Compile Include="EncrptionHelper-done.cs" />
+    <Compile Include="ExceptionHelper-done.cs" />
+    <Compile Include="Fetch-done.cs" />
+    <Compile Include="RegExp-done.cs" />
     <Compile Include="Temp-File.cs" />
-    <Compile Include="FileHelper.cs" />
-    <Compile Include="LogHelper.cs" />
+    <Compile Include="FileHelper-ing.cs" />
+    <Compile Include="LogHelper-done.cs" />
     <Compile Include="Temp-Helper.cs" />
-    <Compile Include="SecureCodeHelper.cs" />
-    <Compile Include="SQLHelper.cs" />
+    <Compile Include="SecureCodeHelper-done.cs" />
+    <Compile Include="SQLHelper-done.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Temp\AppSettings.cs" />
     <Compile Include="Temp\AssemblyHelper.cs" />
@@ -70,9 +71,7 @@
     <Compile Include="Temp\Converter.cs" />
     <Compile Include="Temp\Cookie.cs" />
     <Compile Include="Temp\Diff.cs" />
-    <Compile Include="Temp\Encrypt.cs" />
     <Compile Include="Temp\EnumHelper.cs" />
-    <Compile Include="Temp\Fetch.cs" />
     <Compile Include="Temp\FileWatchHelper.cs" />
     <Compile Include="Temp\GeoHelper.cs" />
     <Compile Include="Temp\ImageUtil.cs" />
@@ -81,7 +80,6 @@
     <Compile Include="Temp\NetHelper.cs" />
     <Compile Include="Temp\ObjectHelper.cs" />
     <Compile Include="Temp\PermutationAndCombination.cs" />
-    <Compile Include="Temp\RegExp.cs" />
     <Compile Include="Temp\SerializationHelper.cs" />
     <Compile Include="Temp\SerializeHelper.cs" />
     <Compile Include="Temp\StringHelper.cs" />
@@ -106,7 +104,7 @@
     <Compile Include="Temp\ValidateCode\ValidateCode_Style8.cs" />
     <Compile Include="Temp\ValidateCode\ValidateCode_Style9.cs" />
     <Compile Include="Temp\WcfServiceProxy.cs" />
-    <Compile Include="ZipHelper.cs" />
+    <Compile Include="ZipHelper-ing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

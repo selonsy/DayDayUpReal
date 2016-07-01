@@ -9,12 +9,10 @@ using System.Web.Security;
 
 namespace Devin
 {
-    /// <summary>
-    /// DES加密，需自定义KEY值，仅保存加密后的字符串
-    /// </summary>
     public abstract class EncrptionHelper
     {
         #region DES
+         
         //示例:
         //加密：EncryptDES("要加密的字符串", "azjmerbv");
         //解密：DecryptDES("要解密的字符串", "azjmerbv");  
@@ -105,6 +103,12 @@ namespace Devin
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] output = md5.ComputeHash(result);
             return BitConverter.ToString(output).Replace("-", "");
+        }
+        public static string EncryptMD5_3(string encryptString)
+        {
+            var md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            var result = BitConverter.ToString(md5.ComputeHash(UnicodeEncoding.UTF8.GetBytes(encryptString.Trim())));
+            return result;
         }
 
         /// MD5解密字符串

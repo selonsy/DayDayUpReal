@@ -38,8 +38,9 @@
     <Reference Include="MyCSharpStudy">
       <HintPath>..\..\..\00Bin\MyCSharpStudy.dll</HintPath>
     </Reference>
-    <Reference Include="MyHelper">
-      <HintPath>..\..\..\00Bin\MyHelper.dll</HintPath>
+    <Reference Include="MyHelper, Version=9.5.2.701, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\02Lib\MyHelper.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common">
       <HintPath>..\..\..\02Lib\ServiceStack.Redis\ServiceStack.Common.dll</HintPath>

@@ -58,11 +58,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GMS.Framework.Contract\GMS.Framework.Contract.csproj">
+    <ProjectReference Include="..\Framework.Contract\Framework.Contract.csproj">
       <Project>{11214D97-F23C-4E16-AA12-ECD824454744}</Project>
       <Name>GMS.Framework.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GMS.Framework.Utility\GMS.Framework.Utility.csproj">
+    <ProjectReference Include="..\Framework.Utility\Framework.Utility.csproj">
       <Project>{9F519EF8-800F-40CB-9545-9AEADF0F387D}</Project>
       <Name>GMS.Framework.Utility</Name>
     </ProjectReference>

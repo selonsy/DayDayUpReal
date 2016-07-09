@@ -33,8 +33,8 @@ namespace Web.EncodeAndDecode
                 string a = qq.Replace('a','2');
             }
             catch(Exception ex) {
-                Devin.LogUtil.WriteError(new Exception(ex.Message));
-                Devin.LogUtil.WriteLog(ex.Message + "呵呵哒！", Devin.LogType.Info);
+                //Devin.LogUtil.WriteError(new Exception(ex.Message));
+                //Devin.LogUtil.WriteLog(ex.Message + "呵呵哒！", Devin.LogType.Info);
             }
         }
     }

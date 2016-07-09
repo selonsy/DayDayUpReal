@@ -334,7 +334,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\00Framework\MyHelper\MyHelper.csproj">
+    <ProjectReference Include="..\..\00Framework\MyHelper\MyHelper.csproj">
       <Project>{eddfd138-9d78-42bf-a0f9-b8615ab1cdec}</Project>
       <Name>MyHelper</Name>
     </ProjectReference>

@@ -1,0 +1,9 @@
+<div id = "user">
+<?php if(cookie('username')) { ?>
+<a href = "#"><?php echo cookie('username'); ?></a>
+<a href = "__MODULE__/User/logout">注销</a>
+<?php  }else{ ?>
+<a href = "__MODULE__/User/login">登录</a><br />
+<a href = "__MODULE__/User/reg">注册</a>
+<?php } ?>
+</div>

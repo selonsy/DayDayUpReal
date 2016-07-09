@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4E9DA119-C926-4330-818D-72C2E39ECFC1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ESBHelper</RootNamespace>
+    <AssemblyName>ESBHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\css\bootstrap-theme.css" />
+    <Content Include="Assets\css\bootstrap-theme.min.css" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\npm.js" />
+    <Content Include="garbage\CommonTemp.js" />
+    <Content Include="js\Common.js" />
+    <Content Include="loginforms\choose-layout-assets\1.jpg" />
+    <Content Include="loginforms\choose-layout-assets\2.jpg" />
+    <Content Include="loginforms\choose-layout-assets\3.jpg" />
+    <Content Include="loginforms\choose-layout-assets\style.css" />
+    <Content Include="loginforms\form-1\assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="loginforms\form-1\assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="loginforms\form-1\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="loginforms\form-1\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="loginforms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="loginforms\form-1\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="loginforms\form-1\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="loginforms\form-1\assets\bootstrap\js\npm.js" />
+    <Content Include="loginforms\form-1\assets\css\form-elements.css" />
+    <Content Include="loginforms\form-1\assets\css\style.css" />
+    <Content Include="loginforms\form-1\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="loginforms\form-1\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="loginforms\form-1\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="loginforms\form-1\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="loginforms\form-1\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="loginforms\form-1\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="loginforms\form-1\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="loginforms\form-1\assets\ico\favicon.png" />
+    <Content Include="loginforms\form-1\assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="loginforms\form-1\assets\img\backgrounds\1.jpg" />
+    <Content Include="loginforms\form-1\assets\js\jquery-1.11.1.js" />
+    <Content Include="loginforms\form-1\assets\js\jquery-1.11.1.min.js" />
+    <Content Include="loginforms\form-1\assets\js\jquery.backstretch.js" />
+    <Content Include="loginforms\form-1\assets\js\jquery.backstretch.min.js" />
+    <Content Include="loginforms\form-1\assets\js\placeholder.js" />
+    <Content Include="loginforms\form-1\assets\js\scripts.js" />
+    <Content Include="loginforms\form-1\index.html" />
+    <Content Include="loginforms\form-2\assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="loginforms\form-2\assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="loginforms\form-2\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="loginforms\form-2\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="loginforms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="loginforms\form-2\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="loginforms\form-2\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="loginforms\form-2\assets\bootstrap\js\npm.js" />
+    <Content Include="loginforms\form-2\assets\css\form-elements.css" />
+    <Content Include="loginforms\form-2\assets\css\style.css" />
+    <Content Include="loginforms\form-2\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="loginforms\form-2\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="loginforms\form-2\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="loginforms\form-2\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="loginforms\form-2\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="loginforms\form-2\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="loginforms\form-2\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="loginforms\form-2\assets\ico\favicon.png" />
+    <Content Include="loginforms\form-2\assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="loginforms\form-2\assets\img\backgrounds\1.jpg" />
+    <Content Include="loginforms\form-2\assets\img\backgrounds\2%402x.jpg" />
+    <Content Include="loginforms\form-2\assets\img\backgrounds\2.jpg" />
+    <Content Include="loginforms\form-2\assets\img\backgrounds\3%402x.jpg" />
+    <Content Include="loginforms\form-2\assets\img\backgrounds\3.jpg" />
+    <Content Include="loginforms\form-2\assets\js\jquery-1.11.1.js" />
+    <Content Include="loginforms\form-2\assets\js\jquery-1.11.1.min.js" />
+    <Content Include="loginforms\form-2\assets\js\jquery.backstretch.js" />
+    <Content Include="loginforms\form-2\assets\js\jquery.backstretch.min.js" />
+    <Content Include="loginforms\form-2\assets\js\placeholder.js" />
+    <Content Include="loginforms\form-2\assets\js\scripts.js" />
+    <Content Include="loginforms\form-2\index.html" />
+    <Content Include="loginforms\form-3\assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="loginforms\form-3\assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="loginforms\form-3\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="loginforms\form-3\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="loginforms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="loginforms\form-3\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="loginforms\form-3\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="loginforms\form-3\assets\bootstrap\js\npm.js" />
+    <Content Include="loginforms\form-3\assets\css\form-elements.css" />
+    <Content Include="loginforms\form-3\assets\css\style.css" />
+    <Content Include="loginforms\form-3\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="loginforms\form-3\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="loginforms\form-3\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="loginforms\form-3\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="loginforms\form-3\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="loginforms\form-3\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="loginforms\form-3\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="loginforms\form-3\assets\ico\favicon.png" />
+    <Content Include="loginforms\form-3\assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="loginforms\form-3\assets\img\backgrounds\1.jpg" />
+    <Content Include="loginforms\form-3\assets\js\jquery-1.11.1.js" />
+    <Content Include="loginforms\form-3\assets\js\jquery-1.11.1.min.js" />
+    <Content Include="loginforms\form-3\assets\js\jquery.backstretch.js" />
+    <Content Include="loginforms\form-3\assets\js\jquery.backstretch.min.js" />
+    <Content Include="loginforms\form-3\assets\js\placeholder.js" />
+    <Content Include="loginforms\form-3\assets\js\scripts.js" />
+    <Content Include="loginforms\form-3\index.html" />
+    <Content Include="loginforms\index.html" />
+    <Content Include="Default.aspx" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\3.jpg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="Assets\js\jquery-1.12.0.min.js" />
+    <Content Include="garbage\Map.Extensions.js" />
+    <Content Include="js\mysoft.js" />
+    <Content Include="garbage\WF_Temp.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebMethodHttpCommon.aspx" />
+    <Content Include="XmlHttpCommon.aspx" />
+    <Content Include="我的待办.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ESBSiteEntity.cs" />
+    <Compile Include="Entity\ServerEntity.cs" />
+    <Compile Include="Entity\SiteType.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebMethodHttpCommon.aspx.cs">
+      <DependentUpon>WebMethodHttpCommon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMethodHttpCommon.aspx.designer.cs">
+      <DependentUpon>WebMethodHttpCommon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XmlHttpCommon.aspx.cs">
+      <DependentUpon>XmlHttpCommon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XmlHttpCommon.aspx.designer.cs">
+      <DependentUpon>XmlHttpCommon.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\css\bootstrap-theme.css.map" />
+    <Content Include="Assets\css\bootstrap.css.map" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="loginforms\form-1\assets\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="loginforms\form-1\assets\bootstrap\css\bootstrap.css.map" />
+    <Content Include="loginforms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="loginforms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="loginforms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="loginforms\form-1\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="loginforms\form-1\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="loginforms\form-1\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="loginforms\form-1\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="loginforms\form-1\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="loginforms\form-1\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\animated.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\bordered-pulled.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\core.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\fixed-width.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\icons.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\larger.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\list.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\mixins.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\path.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\rotated-flipped.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\stacked.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\less\variables.less" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_animated.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_core.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_icons.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_larger.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_list.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_path.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_stacked.scss" />
+    <Content Include="loginforms\form-1\assets\font-awesome\scss\_variables.scss" />
+    <Content Include="loginforms\form-2\assets\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="loginforms\form-2\assets\bootstrap\css\bootstrap.css.map" />
+    <Content Include="loginforms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="loginforms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="loginforms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="loginforms\form-2\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="loginforms\form-2\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="loginforms\form-2\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="loginforms\form-2\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="loginforms\form-2\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="loginforms\form-2\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\animated.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\bordered-pulled.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\core.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\fixed-width.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\icons.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\larger.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\list.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\mixins.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\path.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\rotated-flipped.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\stacked.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\less\variables.less" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_animated.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_core.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_icons.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_larger.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_list.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_path.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_stacked.scss" />
+    <Content Include="loginforms\form-2\assets\font-awesome\scss\_variables.scss" />
+    <Content Include="loginforms\form-3\assets\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="loginforms\form-3\assets\bootstrap\css\bootstrap.css.map" />
+    <Content Include="loginforms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="loginforms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="loginforms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="loginforms\form-3\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="loginforms\form-3\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="loginforms\form-3\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="loginforms\form-3\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="loginforms\form-3\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="loginforms\form-3\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\animated.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\bordered-pulled.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\core.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\fixed-width.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\icons.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\larger.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\list.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\mixins.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\path.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\rotated-flipped.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\stacked.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\less\variables.less" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_animated.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_core.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_icons.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_larger.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_list.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_path.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_stacked.scss" />
+    <Content Include="loginforms\form-3\assets\font-awesome\scss\_variables.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\00Framework\MyHelper\MyHelper.csproj">
+      <Project>{eddfd138-9d78-42bf-a0f9-b8615ab1cdec}</Project>
+      <Name>MyHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56657</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56657/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

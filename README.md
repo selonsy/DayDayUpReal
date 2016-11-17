@@ -1,2 +1,2 @@
 # DayDayUpReal
-Good good study，and day day down！
+Good good study,day day down！
